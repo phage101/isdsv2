@@ -24,6 +24,7 @@
         "bootstrap": "^4.3.1",
         "cross-env": "^7.0",
         "cross-var": "^1.1.0",
+        "datatables.net-buttons-bs4": "^1.7.1",
         "jest": "^24.8.0",
         "jquery": "^3.5.0",
         "laravel-mix": "^5.0.1",
@@ -62,5 +63,12 @@
     },
     "engines": {
         "node": ">=6.0.0"
+    },
+    "dependencies": {
+        "datatables.net-bs4": "^1.10.22",
+        "datatables.net-responsive-bs4": "^2.2.6",
+        "jszip": "^3.5.0",
+        "pdfmake": "^0.1.68",
+        "tempusdominus-bootstrap-4": "^5.1.2"
     }
 }

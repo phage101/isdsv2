@@ -60,6 +60,81 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
+                        {{ html()->label('ID Number')->class('col-md-2 form-control-label')->for('id_number') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('id_number')
+                                ->class('form-control')
+                                ->placeholder('ID Number')
+                                ->attribute('maxlength', 191) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label('Date of Birth')->class('col-md-2 form-control-label')->for('date_birth') }}
+
+                        <div class="col-md-10">
+                            {{ html()->date('date_birth')
+                                ->class('form-control')
+                                ->placeholder('Date of Birth') }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label('Sex')->class('col-md-2 form-control-label')->for('sex') }}
+
+                        <div class="col-md-10">
+                            {{ html()->select('sex', ['Male' => 'Male', 'Female' => 'Female'], null)
+                                ->class('form-control')
+                                ->placeholder('Select Sex') }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label('PWD (Person with Disability)')->class('col-md-2 form-control-label')->for('is_pwd') }}
+
+                        <div class="col-md-10">
+                            <label class="switch switch-label switch-pill switch-primary">
+                                {{ html()->checkbox('is_pwd', false)->class('switch-input') }}
+                                <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
+                            </label>
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label('Phone')->class('col-md-2 form-control-label')->for('phone') }}
+
+                        <div class="col-md-10">
+                            {{ html()->tel('phone')
+                                ->class('form-control')
+                                ->placeholder('Phone Number')
+                                ->attribute('maxlength', 191) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label('Address')->class('col-md-2 form-control-label')->for('address') }}
+
+                        <div class="col-md-10">
+                            {{ html()->textarea('address')
+                                ->class('form-control')
+                                ->placeholder('Address')
+                                ->rows(3) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label('Designation')->class('col-md-2 form-control-label')->for('designation') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('designation')
+                                ->class('form-control')
+                                ->placeholder('Designation')
+                                ->attribute('maxlength', 191) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
                         {{ html()->label('Abilities')->class('col-md-2 form-control-label') }}
 
                         <div class="table-responsive col-md-10">
