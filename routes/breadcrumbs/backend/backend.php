@@ -13,3 +13,7 @@ require __DIR__.'/office.php';
 require __DIR__.'/request_type.php';
 require __DIR__.'/category.php';
 require __DIR__.'/sub_category.php';
+require __DIR__.'/priority_level.php';
+require __DIR__.'/status.php';
+require __DIR__.'/medium.php';
+require __DIR__.'/host.php';

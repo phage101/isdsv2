@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Events\Frontend\Host;
+
+use Illuminate\Queue\SerializesModels;
+
+/**
+ * Class HostDeleted.
+ */
+class HostDeleted
+{
+    use SerializesModels;
+
+    /**
+     * @var
+     */
+    public $host;
+
+    /**
+     * @param $host
+     */
+    public function __construct($host)
+    {
+        $this->host = $host;
+    }
+}

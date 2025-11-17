@@ -12,6 +12,9 @@ return [
     |
     */
 
+    'yes' => 'Yes',
+    'no' => 'No',
+
     'backend' => [
         'access' => [
             'users' => [
