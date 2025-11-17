@@ -1,0 +1,65 @@
+@extends('backend.layouts.app')
+
+@section('title', app_name() . ' | ' . __('backend_sub_categories.labels.management'))
+
+@section('breadcrumb-links')
+    @include('backend.sub_category.includes.breadcrumb-links')
+@endsection
+
+@section('content')
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-5">
+                <h4 class="card-title mb-0">
+                    {{ __('backend_sub_categories.labels.management') }} <small class="text-muted">{{ __('backend_sub_categories.labels.deleted') }}</small>
+                </h4>
+            </div><!--col-->
+
+            <div class="col-sm-7">
+                @include('backend.sub_category.includes.header-buttons')
+            </div><!--col-->
+        </div><!--row-->
+
+        <div class="row mt-4">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>{{ __('backend_sub_categories.table.sub_category') ?? 'Sub Category' }}</th>
+                            <th>@lang('backend_sub_categories.table.created')</th>
+                            <th>@lang('backend_sub_categories.table.deleted')</th>
+                            <th>@lang('labels.general.actions')</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($subCategories as $subCategory)
+                            <tr>
+                                <td class="align-middle"><a href="/admin/sub_categories/{{ $subCategory->id }}">{{ $subCategory->sub_category }}</a></td>
+                                <td class="align-middle">{!! $subCategory->created_at !!}</td>
+                                <td class="align-middle">{{ $subCategory->deleted_at->diffForHumans() }}</td>
+                                <td class="align-middle">{!! $subCategory->trashed_buttons !!}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div><!--col-->
+        </div><!--row-->
+        <div class="row">
+            <div class="col-7">
+                <div class="float-left">
+                    {!! $subCategories->count() !!} {{ trans_choice('backend_sub_categories.table.total', $subCategories->count()) }}
+                </div>
+            </div><!--col-->
+
+            <div class="col-5">
+                <div class="float-right">
+                    {!! $subCategories->links() !!}
+                </div>
+            </div><!--col-->
+        </div><!--row-->
+    </div><!--card-body-->
+</div><!--card-->
+@endsection

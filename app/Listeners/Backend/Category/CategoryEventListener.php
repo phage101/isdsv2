@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Listeners\Backend\RequestType;
+namespace App\Listeners\Backend\Category;
 
 /**
- * Class RequestTypeEventListener.
+ * Class CategoryEventListener.
  */
-class RequestTypeEventListener
+class CategoryEventListener
 {
     /**
      * @param $event
@@ -14,7 +14,7 @@ class RequestTypeEventListener
     {
         $user    = auth()->user()->name;
 
-        $newitem = json_encode($event->requestType->toArray());
+        $newitem = json_encode($event->category->toArray());
 
         \Log::info('User ' . $user . ' has created item ' . $newitem);
     }
@@ -26,7 +26,7 @@ class RequestTypeEventListener
     {
         $user           = auth()->user()->name;
 
-        $updated_item   = json_encode($event->requestType->toArray());
+        $updated_item   = json_encode($event->category->toArray());
 
         \Log::info('User ' . $user . ' has updated item ' . $updated_item);
     }
@@ -38,7 +38,7 @@ class RequestTypeEventListener
     {
         $user           = auth()->user()->name;
 
-        $deleted_item   = json_encode($event->requestType->toArray());
+        $deleted_item   = json_encode($event->category->toArray());
 
         \Log::info('User ' . $user . ' has deleted item ' . $deleted_item);
     }
@@ -52,18 +52,18 @@ class RequestTypeEventListener
     public function subscribe($events)
     {
         $events->listen(
-            \App\Events\Frontend\RequestType\RequestTypeCreated::class,
-            'App\Listeners\Backend\RequestType\RequestTypeEventListener@onCreated'
+            \App\Events\Frontend\Category\CategoryCreated::class,
+            'App\Listeners\Backend\Category\CategoryEventListener@onCreated'
         );
 
         $events->listen(
-            \App\Events\Frontend\RequestType\RequestTypeUpdated::class,
-            'App\Listeners\Backend\RequestType\RequestTypeEventListener@onUpdated'
+            \App\Events\Frontend\Category\CategoryUpdated::class,
+            'App\Listeners\Backend\Category\CategoryEventListener@onUpdated'
         );
 
         $events->listen(
-            \App\Events\Frontend\RequestType\RequestTypeDeleted::class,
-            'App\Listeners\Backend\RequestType\RequestTypeEventListener@onDeleted'
+            \App\Events\Frontend\Category\CategoryDeleted::class,
+            'App\Listeners\Backend\Category\CategoryEventListener@onDeleted'
         );
     }
 }

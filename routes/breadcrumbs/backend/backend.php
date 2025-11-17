@@ -10,3 +10,6 @@ require __DIR__.'/log-viewer.php';
 require __DIR__.'/province.php';
 require __DIR__.'/office_type.php';
 require __DIR__.'/office.php';
+require __DIR__.'/request_type.php';
+require __DIR__.'/category.php';
+require __DIR__.'/sub_category.php';
