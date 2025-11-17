@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Events\Frontend\DummyModel;
+
+use Illuminate\Queue\SerializesModels;
+
+/**
+ * Class DummyEventUpdated.
+ */
+class DummyEventUpdated
+{
+    use SerializesModels;
+
+    /**
+     * @var
+     */
+    public $DummyVariable;
+
+    /**
+     * @param $DummyVariable
+     */
+    public function __construct($DummyVariable)
+    {
+        $this->DummyVariable = $DummyVariable;
+    }
+}
