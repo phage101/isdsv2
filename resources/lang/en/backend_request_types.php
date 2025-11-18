@@ -3,28 +3,32 @@
 return [
     'table' => [
         'request_type'    => 'Request Type',
-        'created'       => 'Created',
-        'actions'       => 'Actions',
-        'last_updated'  => 'Updated',
-        'total'         => 'Total|Totals',
-        'deleted'       => 'Deleted',
+        'name'            => 'Name',
+        'active'          => 'Active',
+        'created'         => 'Created',
+        'actions'         => 'Actions',
+        'last_updated'    => 'Updated',
+        'total'           => 'Total|Totals',
+        'deleted'         => 'Deleted',
     ],
 
     'alerts' => [
-        'created' => 'New RequestType created',
-        'updated' => 'RequestType updated',
-        'deleted' => 'RequestType was deleted',
-        'deleted_permanently' => 'RequestType was permanently deleted',
-        'restored'  => 'RequestType was restored',
+        'created' => 'New Request Type created',
+        'updated' => 'Request Type updated',
+        'deleted' => 'Request Type was deleted',
+        'deleted_permanently' => 'Request Type was permanently deleted',
+        'restored'  => 'Request Type was restored',
     ],
 
     'labels'    => [
-        'management'    => 'RequestType Management',
+        'management'    => 'Request Type Management',
         'active'        => 'Active',
+        'inactive'      => 'Inactive',
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'request_type'    => 'Request Type',
+        'request_type'  => 'Request Type',
+        'name'          => 'Name',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -33,26 +37,32 @@ return [
     'validation' => [
         'attributes' => [
             'request_type' => 'Request Type',
+            'name'         => 'Name',
+            'active'       => 'Active',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'RequestType',
+        'title'  => 'Request Type',
     ],
 
     'tabs' => [
-        'request_type'    => 'Request Type',
+        'titles' => [
+            'overview' => 'Overview',
+        ],
         'content'   => [
             'overview' => [
                 'request_type'    => 'Request Type',
-                'created_at'    => 'Created',
-                'last_updated'  => 'Updated'
+                'name'            => 'Name',
+                'active'          => 'Active',
+                'created_at'      => 'Created',
+                'last_updated'    => 'Updated'
             ],
         ],
     ],
 
     'menus' => [
-      'main' => 'RequestType',
+      'main' => 'Request Type',
       'all' => 'All',
       'create' => 'Create',
       'deleted' => 'Deleted'

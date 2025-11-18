@@ -49,6 +49,13 @@ class ProvinceController extends Controller
 
                 $query = Province::selectRaw('provinces.*');
 
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('province_code', 'like', "%{$search}%")
+                          ->orWhere('name', 'like', "%{$search}%");
+                }
+
                 return DataTables::of($query)
                     ->editColumn('province_code', function ($row) {
                         return '<span class="sortable"><a href="' . route('admin.provinces.show', $row) . '">' . $row->province_code . "</a></span>";
@@ -56,8 +63,8 @@ class ProvinceController extends Controller
                     ->addColumn('name', function ($row) {
                         return $row->name;
                     })
-                    ->addColumn('active', function ($row) {
-                        return $row->active ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>';
+                    ->editColumn('active', function ($row) {
+                        return $row->active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
                     })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View Province') ? $row->getShowButtonAttribute() : '') . 

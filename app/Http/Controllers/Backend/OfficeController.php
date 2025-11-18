@@ -57,6 +57,13 @@ class OfficeController extends Controller
                     ->leftJoin('office_types', 'offices.office_types_id', '=', 'office_types.id')
                     ->leftJoin('provinces', 'offices.provinces_id', '=', 'provinces.id');
 
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('offices.office_code', 'like', "%{$search}%")
+                          ->orWhere('offices.name', 'like', "%{$search}%");
+                }
+
                 return DataTables::of($query)
                     ->editColumn('office_code', function ($row) {
                         return '<span class="sortable"><a href="' . route('admin.offices.show', $row) . '">' . $row->office_code . "</a></span>";
@@ -70,12 +77,15 @@ class OfficeController extends Controller
                     ->addColumn('province', function ($row) {
                         return $row->province ?? 'N/A';
                     })
+                    ->editColumn('active', function ($row) {
+                        return $row->active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
+                    })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View Office') ? $row->getShowButtonAttribute() : '') . 
                         (auth()->user()->can('Update Office') ? $row->getEditButtonAttribute() : '') . 
                         (auth()->user()->can('Delete Office') ? $row->getDeleteButtonAttribute() : '');
                     })
-                    ->rawColumns(['office_code','action'])
+                    ->rawColumns(['office_code','action','active'])
                     ->make(true);
             }
         }

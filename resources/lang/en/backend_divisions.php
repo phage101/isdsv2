@@ -2,12 +2,14 @@
 
 return [
     'table' => [
-        'name'    => 'name',
-        'created'       => 'Created',
-        'actions'       => 'Actions',
-        'last_updated'  => 'Updated',
-        'total'         => 'Total|Totals',
-        'deleted'       => 'Deleted',
+        'name'           => 'Name',
+        'division_code'  => 'Division Code',
+        'active'         => 'Active',
+        'created'        => 'Created',
+        'actions'        => 'Actions',
+        'last_updated'   => 'Updated',
+        'total'          => 'Total|Totals',
+        'deleted'        => 'Deleted',
     ],
 
     'alerts' => [
@@ -21,10 +23,12 @@ return [
     'labels'    => [
         'management'    => 'Division Management',
         'active'        => 'Active',
+        'inactive'      => 'Inactive',
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'name'    => 'name',
+        'name'          => 'Name',
+        'division_code' => 'Division Code',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -32,7 +36,9 @@ return [
 
     'validation' => [
         'attributes' => [
-            'name' => 'name',
+            'name'           => 'Name',
+            'division_code'  => 'Division Code',
+            'active'         => 'Active',
         ]
     ],
 
@@ -41,12 +47,16 @@ return [
     ],
 
     'tabs' => [
-        'name'    => 'name',
+        'titles' => [
+            'overview' => 'Overview',
+        ],
         'content'   => [
             'overview' => [
-                'name'    => 'name',
-                'created_at'    => 'Created',
-                'last_updated'  => 'Updated'
+                'name'           => 'Name',
+                'division_code'  => 'Division Code',
+                'active'         => 'Active',
+                'created_at'     => 'Created',
+                'last_updated'   => 'Updated'
             ],
         ],
     ],

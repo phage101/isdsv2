@@ -42,77 +42,27 @@
     </div><!--card-body-->
 </div><!--card-->
 @endsection
+
+@push('after-styles')
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.min.css">
+@endpush
+
 @push('after-scripts')
+<script src="https://cdn.datatables.net/2.3.5/js/dataTables.min.js"></script>
 <script>
-    if (typeof jQuery == 'undefined') {
-        console.log('jQuery not loaded.');
-    } else if (typeof $.fn.dataTable === 'undefined') {
-        console.log('DataTables not loaded.');
-    } else {
-        $(function() {
-            $('#provinces_table').DataTable({
-            dom: "<'row'<'col-sm-3'l><'text-center col-sm-6'B><'col-sm-3 toolbar'f>>" +
-                "<'row'<'col-sm-12'tr>>" +
-                "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-            buttons: [{
-                    extend: 'copy',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-copy"></i> Copy'
-                },
-                {
-                    extend: 'print',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-print"></i> Print'
-                },
-                {
-                    extend: 'excel',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-file-excel-o"></i> Excel'
-                },
-                {
-                    extend: 'pdf',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-file-pdf-o"></i> PDF'
-                },
-                {
-                    extend: 'colvis',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-eye"></i> Column Visibility'
-                },
-            ],
+    $(function() {
+        $('#provinces_table').DataTable({
             processing: true,
-            responsive: true,
-            bStateSave: true,
             serverSide: true,
-            autoWidth: false,
-            pageLength: 10,
+            paging: false,
             ajax: "{{ route('admin.provinces.index') }}",
-            columns: [{
-                    data: 'province_code',
-                    name: 'province_code'
-                },
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'active',
-                    name: 'active'
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    className: "text-right",
-                    orderable: false,
-                    searchable: false
-                }
-            ],
-            order: [
-                [1, 'desc']
-            ],
-            initComplete: function() {}
+            columns: [
+                { data: 'province_code', name: 'province_code', searchable: true },
+                { data: 'name', name: 'name', searchable: true },
+                { data: 'active', name: 'active', searchable: false },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ]
         });
-        });
-    }
+    });
 </script>
 @endpush

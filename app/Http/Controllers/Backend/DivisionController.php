@@ -49,16 +49,25 @@ class DivisionController extends Controller
 
                 $query = Division::selectRaw('divisions.*');
 
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('divisions.name', 'like', "%{$search}%");
+                }
+
                 return DataTables::of($query)
                     ->editColumn('name', function ($row) {
                         return '<span class="sortable"><a href="' . route('admin.divisions.show', $row) . '">' . $row->name . "</a></span>";
+                    })
+                    ->editColumn('active', function ($row) {
+                        return $row->active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
                     })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View Division') ? $row->getShowButtonAttribute() : '') . 
                         (auth()->user()->can('Update Division') ? $row->getEditButtonAttribute() : '') . 
                         (auth()->user()->can('Delete Division') ? $row->getDeleteButtonAttribute() : '');
                     })
-                    ->rawColumns(['name','action'])
+                    ->rawColumns(['name','action','active'])
                     ->make(true);
             }
         }

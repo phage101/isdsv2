@@ -17,7 +17,7 @@ Breadcrumbs::for('admin.request_types.show', function ($trail, $id) {
 
 Breadcrumbs::for('admin.request_types.edit', function ($trail, $id) {
     $trail->parent('admin.request_types.index');
-    $trail->push(__('backend.request_types.labels.edit'), route('admin.request_types.edit', $id));
+    $trail->push(__('backend_request_types.labels.edit'), route('admin.request_types.edit', $id));
 });
 
 Breadcrumbs::for('admin.request_types.deleted', function ($trail) {

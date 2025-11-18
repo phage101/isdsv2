@@ -49,6 +49,13 @@ class ClientTypeController extends Controller
 
                 $query = ClientType::selectRaw('client_types.*');
 
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('client_types.name', 'like', "%{$search}%")
+                          ->orWhere('client_types.description', 'like', "%{$search}%");
+                }
+
                 return DataTables::of($query)
                     ->editColumn('name', function ($row) {
                         return '<span class="sortable"><a href="' . route('admin.client_types.show', $row) . '">' . $row->name . "</a></span>";

@@ -50,16 +50,25 @@ class SubCategoryController extends Controller
 
                 $query = SubCategory::selectRaw('sub_categories.*');
 
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('sub_categories.name', 'like', "%{$search}%");
+                }
+
                 return DataTables::of($query)
                     ->editColumn('name', function ($row) {
                         return '<span class="sortable"><a href="' . route('admin.sub_categories.show', $row) . '">' . e($row->name) . "</a></span>";
+                    })
+                    ->editColumn('active', function ($row) {
+                        return $row->active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
                     })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View SubCategory') ? $row->getShowButtonAttribute() : '') . 
                         (auth()->user()->can('Update SubCategory') ? $row->getEditButtonAttribute() : '') . 
                         (auth()->user()->can('Delete SubCategory') ? $row->getDeleteButtonAttribute() : '');
                     })
-                    ->rawColumns(['name','action'])
+                    ->rawColumns(['name','action','active'])
                     ->make(true);
             }
         }

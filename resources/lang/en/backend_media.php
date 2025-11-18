@@ -2,8 +2,8 @@
 
 return [
     'table' => [
-        'name'    => 'name',
-        'active' => 'active',
+        'name'          => 'Name',
+        'active'        => 'Active',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -22,10 +22,11 @@ return [
     'labels'    => [
         'management'    => 'Medium Management',
         'active'        => 'Active',
+        'inactive'      => 'Inactive',
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'name'    => 'name',
+        'name'          => 'Name',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -33,8 +34,8 @@ return [
 
     'validation' => [
         'attributes' => [
-            'name' => 'name',
-            'active' => 'active',
+            'name'   => 'Name',
+            'active' => 'Active',
         ]
     ],
 
@@ -43,11 +44,13 @@ return [
     ],
 
     'tabs' => [
-        'name'    => 'name',
+        'titles' => [
+            'overview' => 'Overview',
+        ],
         'content'   => [
             'overview' => [
-                'name'    => 'name',
-                'active' => 'active',
+                'name'          => 'Name',
+                'active'        => 'Active',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

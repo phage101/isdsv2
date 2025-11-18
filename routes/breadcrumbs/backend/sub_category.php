@@ -17,7 +17,7 @@ Breadcrumbs::for('admin.sub_categories.show', function ($trail, $id) {
 
 Breadcrumbs::for('admin.sub_categories.edit', function ($trail, $id) {
     $trail->parent('admin.sub_categories.index');
-    $trail->push(__('backend.sub_categories.labels.edit'), route('admin.sub_categories.edit', $id));
+    $trail->push(__('backend_sub_categories.labels.edit'), route('admin.sub_categories.edit', $id));
 });
 
 Breadcrumbs::for('admin.sub_categories.deleted', function ($trail) {

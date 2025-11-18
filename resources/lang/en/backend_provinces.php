@@ -2,12 +2,14 @@
 
 return [
     'table' => [
-        'province_code'    => 'province_code',
-        'created'       => 'Created',
-        'actions'       => 'Actions',
-        'last_updated'  => 'Updated',
-        'total'         => 'Total|Totals',
-        'deleted'       => 'Deleted',
+        'province_code'    => 'Province Code',
+        'name'             => 'Name',
+        'active'           => 'Active',
+        'created'          => 'Created',
+        'actions'          => 'Actions',
+        'last_updated'     => 'Updated',
+        'total'            => 'Total|Totals',
+        'deleted'          => 'Deleted',
     ],
 
     'alerts' => [
@@ -21,10 +23,12 @@ return [
     'labels'    => [
         'management'    => 'Province Management',
         'active'        => 'Active',
+        'inactive'      => 'Inactive',
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'province_code'    => 'province_code',
+        'province_code' => 'Province Code',
+        'name'          => 'Name',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -32,7 +36,9 @@ return [
 
     'validation' => [
         'attributes' => [
-            'province_code' => 'province_code',
+            'province_code' => 'Province Code',
+            'name'          => 'Name',
+            'active'        => 'Active',
         ]
     ],
 
@@ -41,10 +47,14 @@ return [
     ],
 
     'tabs' => [
-        'province_code'    => 'province_code',
+        'titles' => [
+            'overview' => 'Overview',
+        ],
         'content'   => [
             'overview' => [
-                'province_code'    => 'province_code',
+                'province_code' => 'Province Code',
+                'name'          => 'Name',
+                'active'        => 'Active',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

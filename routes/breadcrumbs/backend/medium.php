@@ -17,7 +17,7 @@ Breadcrumbs::for('admin.media.show', function ($trail, $id) {
 
 Breadcrumbs::for('admin.media.edit', function ($trail, $id) {
     $trail->parent('admin.media.index');
-    $trail->push(__('backend.media.labels.edit'), route('admin.media.edit', $id));
+    $trail->push(__('backend_media.labels.edit'), route('admin.media.edit', $id));
 });
 
 Breadcrumbs::for('admin.media.deleted', function ($trail) {

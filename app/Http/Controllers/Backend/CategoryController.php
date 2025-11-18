@@ -50,13 +50,19 @@ class CategoryController extends Controller
 
                 $query = Category::selectRaw('categories.*');
 
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('categories.name', 'like', "%{$search}%");
+                }
+
                 return DataTables::of($query)
                     ->editColumn('name', function ($row) {
                         return '<span class="sortable"><a href="' . route('admin.categories.show', $row) . '">' . e($row->name) . "</a></span>";
                     })
-                    ->addColumn('active', function ($row) {
+                    ->editColumn('active', function ($row) {
                         if (isset($row->active)) {
-                            return $row->active ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>';
+                            return $row->active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
                         }
                         return '<span class="badge badge-secondary">N/A</span>';
                     })

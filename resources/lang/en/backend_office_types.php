@@ -2,29 +2,33 @@
 
 return [
     'table' => [
-        'office_type'    => 'office_type',
-        'created'       => 'Created',
-        'actions'       => 'Actions',
-        'last_updated'  => 'Updated',
-        'total'         => 'Total|Totals',
-        'deleted'       => 'Deleted',
+        'office_type'    => 'Office Type',
+        'name'           => 'Name',
+        'active'         => 'Active',
+        'created'        => 'Created',
+        'actions'        => 'Actions',
+        'last_updated'   => 'Updated',
+        'total'          => 'Total|Totals',
+        'deleted'        => 'Deleted',
     ],
 
     'alerts' => [
-        'created' => 'New OfficeType created',
-        'updated' => 'OfficeType updated',
-        'deleted' => 'OfficeType was deleted',
-        'deleted_permanently' => 'OfficeType was permanently deleted',
-        'restored'  => 'OfficeType was restored',
+        'created' => 'New Office Type created',
+        'updated' => 'Office Type updated',
+        'deleted' => 'Office Type was deleted',
+        'deleted_permanently' => 'Office Type was permanently deleted',
+        'restored'  => 'Office Type was restored',
     ],
 
     'labels'    => [
-        'management'    => 'OfficeType Management',
+        'management'    => 'Office Type Management',
         'active'        => 'Active',
+        'inactive'      => 'Inactive',
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'office_type'    => 'office_type',
+        'office_type'   => 'Office Type',
+        'name'          => 'Name',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -32,19 +36,25 @@ return [
 
     'validation' => [
         'attributes' => [
-            'office_type' => 'office_type',
+            'office_type' => 'Office Type',
+            'name'        => 'Name',
+            'active'      => 'Active',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'OfficeType',
+        'title'  => 'Office Type',
     ],
 
     'tabs' => [
-        'office_type'    => 'office_type',
+        'titles' => [
+            'overview' => 'Overview',
+        ],
         'content'   => [
             'overview' => [
-                'office_type'    => 'office_type',
+                'office_type'   => 'Office Type',
+                'name'          => 'Name',
+                'active'        => 'Active',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],
@@ -52,7 +62,7 @@ return [
     ],
 
     'menus' => [
-      'main' => 'OfficeType',
+      'main' => 'Office Type',
       'all' => 'All',
       'create' => 'Create',
       'deleted' => 'Deleted'

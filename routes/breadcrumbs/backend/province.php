@@ -17,7 +17,7 @@ Breadcrumbs::for('admin.provinces.show', function ($trail, $id) {
 
 Breadcrumbs::for('admin.provinces.edit', function ($trail, $id) {
     $trail->parent('admin.provinces.index');
-    $trail->push(__('backend.provinces.labels.edit'), route('admin.provinces.edit', $id));
+    $trail->push(__('backend_provinces.labels.edit'), route('admin.provinces.edit', $id));
 });
 
 Breadcrumbs::for('admin.provinces.deleted', function ($trail) {

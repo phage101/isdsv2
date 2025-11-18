@@ -31,6 +31,7 @@
                                 <th>Office Name</th>
                                 <th>Office Type</th>
                                 <th>Province</th>
+                                <th>Active</th>
                                 <th style="width:0%">@lang('backend_offices.table.actions')</th>
                             </tr>
                         </thead>
@@ -43,81 +44,29 @@
     </div><!--card-body-->
 </div><!--card-->
 @endsection
+
+@push('after-styles')
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.min.css">
+@endpush
+
 @push('after-scripts')
+<script src="https://cdn.datatables.net/2.3.5/js/dataTables.min.js"></script>
 <script>
-    if (typeof jQuery == 'undefined') {
-        console.log('jQuery not loaded.');
-    } else if (typeof $.fn.dataTable === 'undefined') {
-        console.log('DataTables not loaded.');
-    } else {
-        $(function() {
-            $('#offices_table').DataTable({
-            dom: "<'row'<'col-sm-3'l><'text-center col-sm-6'B><'col-sm-3 toolbar'f>>" +
-                "<'row'<'col-sm-12'tr>>" +
-                "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-            buttons: [{
-                    extend: 'copy',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-copy"></i> Copy'
-                },
-                {
-                    extend: 'print',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-print"></i> Print'
-                },
-                {
-                    extend: 'excel',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-file-excel-o"></i> Excel'
-                },
-                {
-                    extend: 'pdf',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-file-pdf-o"></i> PDF'
-                },
-                {
-                    extend: 'colvis',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-eye"></i> Column Visibility'
-                },
-            ],
+    $(function() {
+        $('#offices_table').DataTable({
             processing: true,
-            responsive: true,
-            bStateSave: true,
             serverSide: true,
-            autoWidth: false,
-            pageLength: 10,
+            paging: false,
             ajax: "{{ route('admin.offices.index') }}",
-            columns: [{
-                    data: 'office_code',
-                    name: 'office_code'
-                },
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'office_type',
-                    name: 'office_type'
-                },
-                {
-                    data: 'province',
-                    name: 'province'
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    className: "text-right",
-                    orderable: false,
-                    searchable: false
-                }
-            ],
-            order: [
-                [1, 'desc']
-            ],
-            initComplete: function() {}
+            columns: [
+                { data: 'office_code', name: 'office_code', searchable: true },
+                { data: 'name', name: 'name', searchable: true },
+                { data: 'office_type', name: 'office_type', searchable: false },
+                { data: 'province', name: 'province', searchable: false },
+                { data: 'active', name: 'active', searchable: false },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ]
         });
-        });
-    }
+    });
 </script>
 @endpush

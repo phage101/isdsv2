@@ -2,31 +2,33 @@
 
 return [
     'table' => [
-        'name'    => 'name',
-        'description' => 'description',
-        'active' => 'active',
-        'created'       => 'Created',
-        'actions'       => 'Actions',
-        'last_updated'  => 'Updated',
-        'total'         => 'Total|Totals',
-        'deleted'       => 'Deleted',
+        'name'            => 'Name',
+        'description'     => 'Description',
+        'active'          => 'Active',
+        'created'         => 'Created',
+        'actions'         => 'Actions',
+        'last_updated'    => 'Updated',
+        'total'           => 'Total|Totals',
+        'deleted'         => 'Deleted',
     ],
 
     'alerts' => [
-        'created' => 'New PriorityLevel created',
-        'updated' => 'PriorityLevel updated',
-        'deleted' => 'PriorityLevel was deleted',
-        'deleted_permanently' => 'PriorityLevel was permanently deleted',
-        'restored'  => 'PriorityLevel was restored',
+        'created' => 'New Priority Level created',
+        'updated' => 'Priority Level updated',
+        'deleted' => 'Priority Level was deleted',
+        'deleted_permanently' => 'Priority Level was permanently deleted',
+        'restored'  => 'Priority Level was restored',
     ],
 
     'labels'    => [
-        'management'    => 'PriorityLevel Management',
+        'management'    => 'Priority Level Management',
         'active'        => 'Active',
+        'inactive'      => 'Inactive',
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'name'    => 'name',
+        'name'          => 'Name',
+        'description'   => 'Description',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -34,31 +36,33 @@ return [
 
     'validation' => [
         'attributes' => [
-            'name' => 'name',
-            'description' => 'description',
-            'active' => 'active',
+            'name'        => 'Name',
+            'description' => 'Description',
+            'active'      => 'Active',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'PriorityLevel',
+        'title'  => 'Priority Level',
     ],
 
     'tabs' => [
-        'name'    => 'name',
+        'titles' => [
+            'overview' => 'Overview',
+        ],
         'content'   => [
             'overview' => [
-                'name'    => 'name',
-                'description' => 'description',
-                'active' => 'active',
-                'created_at'    => 'Created',
-                'last_updated'  => 'Updated'
+                'name'            => 'Name',
+                'description'     => 'Description',
+                'active'          => 'Active',
+                'created_at'      => 'Created',
+                'last_updated'    => 'Updated'
             ],
         ],
     ],
 
     'menus' => [
-      'main' => 'PriorityLevel',
+      'main' => 'Priority Level',
       'all' => 'All',
       'create' => 'Create',
       'deleted' => 'Deleted'

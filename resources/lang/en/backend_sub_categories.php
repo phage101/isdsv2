@@ -3,28 +3,37 @@
 return [
     'table' => [
         'sub_category'    => 'Sub Category',
-        'created'       => 'Created',
-        'actions'       => 'Actions',
-        'last_updated'  => 'Updated',
-        'total'         => 'Total|Totals',
-        'deleted'       => 'Deleted',
+        'name'            => 'Name',
+        'category'        => 'Category',
+        'description'     => 'Description',
+        'active'          => 'Active',
+        'created'         => 'Created',
+        'actions'         => 'Actions',
+        'last_updated'    => 'Updated',
+        'total'           => 'Total|Totals',
+        'deleted'         => 'Deleted',
     ],
 
     'alerts' => [
-        'created' => 'New SubCategory created',
-        'updated' => 'SubCategory updated',
-        'deleted' => 'SubCategory was deleted',
-        'deleted_permanently' => 'SubCategory was permanently deleted',
-        'restored'  => 'SubCategory was restored',
+        'created' => 'New Sub Category created',
+        'updated' => 'Sub Category updated',
+        'deleted' => 'Sub Category was deleted',
+        'deleted_permanently' => 'Sub Category was permanently deleted',
+        'restored'  => 'Sub Category was restored',
     ],
 
     'labels'    => [
-        'management'    => 'SubCategory Management',
+        'management'    => 'Sub Category Management',
         'active'        => 'Active',
+        'inactive'      => 'Inactive',
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'sub_category'    => 'Sub Category',
+        'sub_category'  => 'Sub Category',
+        'name'          => 'Name',
+        'category'      => 'Category',
+        'categories_id' => 'Category',
+        'description'   => 'Description',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -32,28 +41,38 @@ return [
 
     'validation' => [
         'attributes' => [
-            'sub_category' => 'Sub Category',
-            'categories_id' => 'Category',
+            'categories_id'  => 'Category',
+            'sub_category'   => 'Sub Category',
+            'name'           => 'Name',
+            'category'       => 'Category',
+            'description'    => 'Description',
+            'active'         => 'Active',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'SubCategory',
+        'title'  => 'Sub Category',
     ],
 
     'tabs' => [
-        'sub_category'    => 'Sub Category',
+        'titles' => [
+            'overview' => 'Overview',
+        ],
         'content'   => [
             'overview' => [
                 'sub_category'    => 'Sub Category',
-                'created_at'    => 'Created',
-                'last_updated'  => 'Updated'
+                'name'            => 'Name',
+                'category'        => 'Category',
+                'description'     => 'Description',
+                'active'          => 'Active',
+                'created_at'      => 'Created',
+                'last_updated'    => 'Updated'
             ],
         ],
     ],
 
     'menus' => [
-      'main' => 'SubCategory',
+      'main' => 'Sub Category',
       'all' => 'All',
       'create' => 'Create',
       'deleted' => 'Deleted'

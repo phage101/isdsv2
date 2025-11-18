@@ -17,7 +17,7 @@ Breadcrumbs::for('admin.priority_levels.show', function ($trail, $id) {
 
 Breadcrumbs::for('admin.priority_levels.edit', function ($trail, $id) {
     $trail->parent('admin.priority_levels.index');
-    $trail->push(__('backend.priority_levels.labels.edit'), route('admin.priority_levels.edit', $id));
+    $trail->push(__('backend_priority_levels.labels.edit'), route('admin.priority_levels.edit', $id));
 });
 
 Breadcrumbs::for('admin.priority_levels.deleted', function ($trail) {

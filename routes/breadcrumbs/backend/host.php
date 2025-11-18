@@ -17,7 +17,7 @@ Breadcrumbs::for('admin.hosts.show', function ($trail, $id) {
 
 Breadcrumbs::for('admin.hosts.edit', function ($trail, $id) {
     $trail->parent('admin.hosts.index');
-    $trail->push(__('backend.hosts.labels.edit'), route('admin.hosts.edit', $id));
+    $trail->push(__('backend_hosts.labels.edit'), route('admin.hosts.edit', $id));
 });
 
 Breadcrumbs::for('admin.hosts.deleted', function ($trail) {

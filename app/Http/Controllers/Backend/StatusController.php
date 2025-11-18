@@ -49,16 +49,25 @@ class StatusController extends Controller
 
                 $query = Status::selectRaw('statuses.*');
 
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('statuses.name', 'like', "%{$search}%");
+                }
+
                 return DataTables::of($query)
                     ->editColumn('name', function ($row) {
                         return '<span class="sortable"><a href="' . route('admin.statuses.show', $row) . '">' . $row->name . "</a></span>";
+                    })
+                    ->editColumn('active', function ($row) {
+                        return $row->active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
                     })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View Status') ? $row->getShowButtonAttribute() : '') . 
                         (auth()->user()->can('Update Status') ? $row->getEditButtonAttribute() : '') . 
                         (auth()->user()->can('Delete Status') ? $row->getDeleteButtonAttribute() : '');
                     })
-                    ->rawColumns(['name','action'])
+                    ->rawColumns(['name','action','active'])
                     ->make(true);
             }
         }

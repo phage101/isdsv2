@@ -17,7 +17,7 @@ Breadcrumbs::for('admin.office_types.show', function ($trail, $id) {
 
 Breadcrumbs::for('admin.office_types.edit', function ($trail, $id) {
     $trail->parent('admin.office_types.index');
-    $trail->push(__('backend.office_types.labels.edit'), route('admin.office_types.edit', $id));
+    $trail->push(__('backend_office_types.labels.edit'), route('admin.office_types.edit', $id));
 });
 
 Breadcrumbs::for('admin.office_types.deleted', function ($trail) {

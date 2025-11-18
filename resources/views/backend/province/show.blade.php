@@ -20,44 +20,17 @@
 
         <div class="row mt-4 mb-4">
             <div class="col">
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="province_code">@lang('backend_provinces.tabs.content.overview.province_code')</label>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-info-circle"></i> @lang('backend_provinces.tabs.titles.overview')</a>
+                    </li>
+                </ul>
 
-                    <div class="col-md-10">
-                        {{ html()->text('province_code')->class('form-control bg-white')->disabled()->value(old('province_code', $province->province_code)) }}
-                    </div><!--col-->
-                </div><!--form-group-->
-            </div><!--col-->
-        </div><!--row-->
-        <div class="row mt-4 mb-4">
-            <div class="col">
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="name">@lang('backend_provinces.tabs.content.overview.name')</label>
-
-                    <div class="col-md-10">
-                        {{ html()->text('name')->class('form-control bg-white')->disabled()->value(old('name', $province->name ?? '')) }}
-                    </div><!--col-->
-                </div><!--form-group-->
-            </div><!--col-->
-        </div><!--row-->
-
-        <div class="row mt-4 mb-4">
-            <div class="col">
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="active">@lang('backend_provinces.tabs.content.overview.active')</label>
-
-                    <div class="col-md-10">
-                        @if(isset($province->active))
-                            @if($province->active)
-                                <span class="badge badge-success">Yes</span>
-                            @else
-                                <span class="badge badge-danger">No</span>
-                            @endif
-                        @else
-                            <span class="badge badge-secondary">N/A</span>
-                        @endif
-                    </div><!--col-->
-                </div><!--form-group-->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="overview" role="tabpanel" aria-expanded="true">
+                        @include('backend.province.show.tabs.overview')
+                    </div><!--tab-->
+                </div><!--tab-content-->
             </div><!--col-->
         </div><!--row-->
     </div><!--card-body-->

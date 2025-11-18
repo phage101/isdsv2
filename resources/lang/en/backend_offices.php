@@ -2,7 +2,10 @@
 
 return [
     'table' => [
-        'title'    => 'Office Code',
+        'title'         => 'Office Code',
+        'name'          => 'Name',
+        'office_type'   => 'Office Type',
+        'active'        => 'Active',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -21,10 +24,13 @@ return [
     'labels'    => [
         'management'    => 'Office Management',
         'active'        => 'Active',
+        'inactive'      => 'Inactive',
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'title'    => 'Office Code',
+        'title'         => 'Office Code',
+        'name'          => 'Name',
+        'office_type'   => 'Office Type',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -32,7 +38,10 @@ return [
 
     'validation' => [
         'attributes' => [
-            'title' => 'Office Code',
+            'title'         => 'Office Code',
+            'name'          => 'Name',
+            'office_type'   => 'Office Type',
+            'active'        => 'Active',
         ]
     ],
 
@@ -41,10 +50,15 @@ return [
     ],
 
     'tabs' => [
-        'title'    => 'Office Code',
+        'titles' => [
+            'overview' => 'Overview',
+        ],
         'content'   => [
             'overview' => [
-                'title'    => 'Office Code',
+                'title'         => 'Office Code',
+                'name'          => 'Name',
+                'office_type'   => 'Office Type',
+                'active'        => 'Active',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

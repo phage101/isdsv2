@@ -3,8 +3,10 @@
 return [
     'table' => [
         'category'    => 'Category',
-        'created'       => 'Created',
-        'actions'       => 'Actions',
+        'name'        => 'Name',
+        'active'      => 'Active',
+        'created'     => 'Created',
+        'actions'     => 'Actions',
         'last_updated'  => 'Updated',
         'total'         => 'Total|Totals',
         'deleted'       => 'Deleted',
@@ -21,10 +23,12 @@ return [
     'labels'    => [
         'management'    => 'Category Management',
         'active'        => 'Active',
+        'inactive'      => 'Inactive',
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'category'    => 'Category',
+        'category'      => 'Category',
+        'name'          => 'Name',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -33,6 +37,8 @@ return [
     'validation' => [
         'attributes' => [
             'category' => 'Category',
+            'name'     => 'Name',
+            'active'   => 'Active',
         ]
     ],
 
@@ -41,10 +47,14 @@ return [
     ],
 
     'tabs' => [
-        'category'    => 'Category',
+        'titles' => [
+            'overview' => 'Overview',
+        ],
         'content'   => [
             'overview' => [
-                'category'    => 'Category',
+                'category'      => 'Category',
+                'name'          => 'Name',
+                'active'        => 'Active',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

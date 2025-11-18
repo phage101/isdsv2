@@ -42,78 +42,26 @@
     </div><!--card-body-->
 </div><!--card-->
 @endsection
+
+@push('after-styles')
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.min.css">
+@endpush
+
 @push('after-scripts')
+<script src="https://cdn.datatables.net/2.3.5/js/dataTables.min.js"></script>
 <script>
-    if (typeof jQuery == 'undefined') {
-
-        console.log('jQuery not loaded.');
-
-    }
     $(function() {
         $('#client_types_table').DataTable({
-            dom: "<'row'<'col-sm-3'l><'text-center col-sm-6'B><'col-sm-3 toolbar'f>>" +
-                "<'row'<'col-sm-12'tr>>" +
-                "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-            buttons: [{
-                    extend: 'copy',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-copy"></i> Copy'
-                },
-                {
-                    extend: 'print',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-print"></i> Print'
-                },
-                {
-                    extend: 'excel',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-file-excel-o"></i> Excel'
-                },
-                {
-                    extend: 'pdf',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-file-pdf-o"></i> PDF'
-                },
-                {
-                    extend: 'colvis',
-                    className: 'btn btn-light',
-                    text: '<i class="fa fa-eye"></i> Column Visibility'
-                },
-            ],
             processing: true,
-            responsive: true,
-            bStateSave: true,
             serverSide: true,
-            autoWidth: false,
-            pageLength: 10,
+            paging: false,
             ajax: "{{ route('admin.client_types.index') }}",
-            columns: [{
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'description',
-                    name: 'description'
-                },
-                {
-                    data: 'active',
-                    name: 'active',
-                    orderable: false,
-                    searchable: false,
-                    className: 'text-center'
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    className: "text-right",
-                    orderable: false,
-                    searchable: false
-                }
-            ],
-            order: [
-                [0, 'asc']
-            ],
-            initComplete: function() {}
+            columns: [
+                { data: 'name', name: 'name', searchable: true },
+                { data: 'description', name: 'description', searchable: true },
+                { data: 'active', name: 'active', searchable: false, orderable: false },
+                { data: 'action', name: 'action', searchable: false, orderable: false }
+            ]
         });
     });
 </script>

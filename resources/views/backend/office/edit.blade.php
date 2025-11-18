@@ -72,8 +72,9 @@
                     {{ html()->label('Active')->class('col-md-2 form-control-label')->for('active') }}
 
                         <div class="col-md-10">
+                            {{ html()->hidden('active', 0) }}
                             <label class="switch switch-label switch-pill switch-primary">
-                                {{ html()->checkbox('active', old('active', $office->active ?? true))->class('switch-input') }}
+                                {{ html()->checkbox('active', 1, old('active', $office->active))->class('switch-input') }}
                                 <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
                             </label>
                         </div><!--col-->

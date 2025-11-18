@@ -2,9 +2,9 @@
 
 return [
     'table' => [
-        'name'    => 'name',
-        'description' => 'Description',
-        'active' => 'Active',
+        'name'          => 'Name',
+        'description'   => 'Description',
+        'active'        => 'Active',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -13,22 +13,22 @@ return [
     ],
 
     'alerts' => [
-        'created' => 'New ClientType created',
-        'updated' => 'ClientType updated',
-        'deleted' => 'ClientType was deleted',
-        'deleted_permanently' => 'ClientType was permanently deleted',
-        'restored'  => 'ClientType was restored',
+        'created' => 'New Client Type created',
+        'updated' => 'Client Type updated',
+        'deleted' => 'Client Type was deleted',
+        'deleted_permanently' => 'Client Type was permanently deleted',
+        'restored'  => 'Client Type was restored',
     ],
 
     'labels'    => [
-        'management'    => 'ClientType Management',
+        'management'    => 'Client Type Management',
         'active'        => 'Active',
         'inactive'      => 'Inactive',
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'name'    => 'name',
-        'description' => 'Description',
+        'name'          => 'Name',
+        'description'   => 'Description',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -36,23 +36,25 @@ return [
 
     'validation' => [
         'attributes' => [
-            'name' => 'name',
-            'description' => 'description',
-            'active' => 'active',
+            'name'        => 'Name',
+            'description' => 'Description',
+            'active'      => 'Active',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'ClientType',
+        'title'  => 'Client Type',
     ],
 
     'tabs' => [
-        'name'    => 'name',
+        'titles' => [
+            'overview' => 'Overview',
+        ],
         'content'   => [
             'overview' => [
-                'name'    => 'name',
-                'description' => 'Description',
-                'active' => 'Active',
+                'name'          => 'Name',
+                'description'   => 'Description',
+                'active'        => 'Active',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],
@@ -60,7 +62,7 @@ return [
     ],
 
     'menus' => [
-      'main' => 'ClientType',
+      'main' => 'Client Type',
       'all' => 'All',
       'create' => 'Create',
       'deleted' => 'Deleted'

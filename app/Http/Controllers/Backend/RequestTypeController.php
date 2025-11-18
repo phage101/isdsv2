@@ -49,16 +49,25 @@ class RequestTypeController extends Controller
 
                 $query = RequestType::selectRaw('request_types.*');
 
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('request_types.name', 'like', "%{$search}%");
+                }
+
                 return DataTables::of($query)
                     ->editColumn('name', function ($row) {
                         return '<span class="sortable"><a href="' . route('admin.request_types.show', $row) . '">' . e($row->name) . "</a></span>";
+                    })
+                    ->editColumn('active', function ($row) {
+                        return $row->active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
                     })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View RequestType') ? $row->getShowButtonAttribute() : '') . 
                         (auth()->user()->can('Update RequestType') ? $row->getEditButtonAttribute() : '') . 
                         (auth()->user()->can('Delete RequestType') ? $row->getDeleteButtonAttribute() : '');
                     })
-                    ->rawColumns(['name','action'])
+                    ->rawColumns(['name','action','active'])
                     ->make(true);
             }
         }

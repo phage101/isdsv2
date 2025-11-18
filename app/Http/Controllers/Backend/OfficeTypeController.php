@@ -49,12 +49,18 @@ class OfficeTypeController extends Controller
 
                 $query = OfficeType::selectRaw('office_types.*');
 
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('name', 'like', "%{$search}%");
+                }
+
                 return DataTables::of($query)
                     ->editColumn('name', function ($row) {
                         return '<span class="sortable"><a href="' . route('admin.office_types.show', $row) . '">' . $row->name . "</a></span>";
                     })
-                    ->addColumn('active', function ($row) {
-                        return $row->active ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>';
+                    ->editColumn('active', function ($row) {
+                        return $row->active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
                     })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View OfficeType') ? $row->getShowButtonAttribute() : '') . 

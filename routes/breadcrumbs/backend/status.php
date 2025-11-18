@@ -17,7 +17,7 @@ Breadcrumbs::for('admin.statuses.show', function ($trail, $id) {
 
 Breadcrumbs::for('admin.statuses.edit', function ($trail, $id) {
     $trail->parent('admin.statuses.index');
-    $trail->push(__('backend.statuses.labels.edit'), route('admin.statuses.edit', $id));
+    $trail->push(__('backend_statuses.labels.edit'), route('admin.statuses.edit', $id));
 });
 
 Breadcrumbs::for('admin.statuses.deleted', function ($trail) {
