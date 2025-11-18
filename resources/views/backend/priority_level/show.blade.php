@@ -39,7 +39,15 @@
                     <label class="col-md-2 form-control-label">@lang('backend_priority_levels.tabs.content.overview.active')</label>
 
                     <div class="col-md-10">
-                        <div class="form-control bg-white">@if($priorityLevel->active) @lang('strings.yes') @else @lang('strings.no') @endif</div>
+                        @if(isset($priorityLevel->active))
+                            @if($priorityLevel->active)
+                                <span class="badge badge-success">Yes</span>
+                            @else
+                                <span class="badge badge-danger">No</span>
+                            @endif
+                        @else
+                            <span class="badge badge-secondary">N/A</span>
+                        @endif
                     </div><!--col-->
                 </div><!--form-group-->
             </div><!--col-->

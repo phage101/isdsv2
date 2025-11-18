@@ -49,7 +49,13 @@ class OfficeController extends Controller
         if ($request->ajax()) {
             if ($request->has('draw')) {
 
-                $query = Office::selectRaw('offices.*');
+                $query = Office::select(
+                        'offices.*',
+                        'office_types.name as office_type',
+                        'provinces.name as province'
+                    )
+                    ->leftJoin('office_types', 'offices.office_types_id', '=', 'office_types.id')
+                    ->leftJoin('provinces', 'offices.provinces_id', '=', 'provinces.id');
 
                 return DataTables::of($query)
                     ->editColumn('office_code', function ($row) {
@@ -58,11 +64,11 @@ class OfficeController extends Controller
                     ->addColumn('name', function ($row) {
                         return $row->name;
                     })
-                    ->addColumn('office_types_id', function ($row) {
-                        return $row->officeType->name ?? 'N/A';
+                    ->addColumn('office_type', function ($row) {
+                        return $row->office_type ?? 'N/A';
                     })
-                    ->addColumn('provinces_id', function ($row) {
-                        return $row->province->name ?? 'N/A';
+                    ->addColumn('province', function ($row) {
+                        return $row->province ?? 'N/A';
                     })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View Office') ? $row->getShowButtonAttribute() : '') . 

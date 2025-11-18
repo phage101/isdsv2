@@ -35,12 +35,13 @@
                         </div><!--col-->
                     </div><!--form-group-->
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label">@lang('backend_hosts.validation.attributes.active')</label>
+                    {{ html()->label(__('backend_hosts.validation.attributes.active'))->class('col-md-2 form-control-label')->for('active') }}
+
                         <div class="col-md-10">
-                            <div class="form-check">
-                                <input type="checkbox" name="active" value="1" class="form-check-input" id="active" checked>
-                                <label class="form-check-label" for="active">@lang('strings.yes')</label>
-                            </div>
+                            <label class="switch switch-label switch-pill switch-primary">
+                                {{ html()->checkbox('active', true)->class('switch-input') }}
+                                <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
+                            </label>
                         </div>
                     </div>
                 </div><!--col-->

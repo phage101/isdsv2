@@ -28,6 +28,7 @@
                         <thead>
                             <tr>
                                 <th>{{ __('backend_request_types.table.request_type') ?? 'Request Type' }}</th>
+                                <th>{{ __('backend_request_types.table.active') ?? 'Active' }}</th>
                                 <th style="width:0%">@lang('backend_request_types.table.actions')</th>
                             </tr>
                         </thead>
@@ -90,6 +91,13 @@
                     name: 'name'
                 },
                 {
+                    data: 'active',
+                    name: 'active',
+                    className: 'text-center',
+                    orderable: true,
+                    searchable: false
+                },
+                {
                     data: 'action',
                     name: 'action',
                     className: "text-right",
@@ -98,7 +106,7 @@
                 }
             ],
             order: [
-                [1, 'desc']
+                [0, 'asc']
             ],
             initComplete: function() {}
         });

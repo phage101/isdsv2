@@ -54,11 +54,12 @@
             <div class="row mt-4 mb-4">
                 <div class="col">
                     <div class="form-group row">
-                        {{ html()->label('Active')->class('col-md-2 form-control-label')->for('active') }}
-                        <div class="col-md-10 mt-2">
-                            <label class="switch switch-sm switch-3d switch-primary">
-                                {{ html()->checkbox('active', true)->value(1) }}
-                                <span></span>
+                    {{ html()->label('Active')->class('col-md-2 form-control-label')->for('active') }}
+
+                        <div class="col-md-10">
+                            <label class="switch switch-label switch-pill switch-primary">
+                                {{ html()->checkbox('active', true)->class('switch-input') }}
+                                <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
                             </label>
                         </div><!--col-->
                     </div><!--form-group-->

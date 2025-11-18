@@ -97,12 +97,12 @@
                     name: 'name'
                 },
                 {
-                    data: 'office_types_id',
-                    name: 'office_types_id'
+                    data: 'office_type',
+                    name: 'office_type'
                 },
                 {
-                    data: 'provinces_id',
-                    name: 'provinces_id'
+                    data: 'province',
+                    name: 'province'
                 },
                 {
                     data: 'action',

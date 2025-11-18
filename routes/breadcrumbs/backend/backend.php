@@ -18,3 +18,4 @@ require __DIR__.'/status.php';
 require __DIR__.'/medium.php';
 require __DIR__.'/host.php';
 require __DIR__.'/division.php';
+require __DIR__.'/client_type.php';

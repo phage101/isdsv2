@@ -52,7 +52,15 @@
                 <div class="form-group row">
                     <label class="col-md-2 form-control-label" for="active">Active</label>
                     <div class="col-md-10">
-                        {{ html()->text('active')->class('form-control bg-white')->disabled()->value($requestType->active ? 'Yes' : 'No') }}
+                        @if(isset($requestType->active))
+                            @if($requestType->active)
+                                <span class="badge badge-success">Yes</span>
+                            @else
+                                <span class="badge badge-danger">No</span>
+                            @endif
+                        @else
+                            <span class="badge badge-secondary">N/A</span>
+                        @endif
                     </div>
                 </div>
             </div><!--col-->

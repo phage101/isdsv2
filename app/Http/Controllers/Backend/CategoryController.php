@@ -54,12 +54,18 @@ class CategoryController extends Controller
                     ->editColumn('name', function ($row) {
                         return '<span class="sortable"><a href="' . route('admin.categories.show', $row) . '">' . e($row->name) . "</a></span>";
                     })
+                    ->addColumn('active', function ($row) {
+                        if (isset($row->active)) {
+                            return $row->active ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>';
+                        }
+                        return '<span class="badge badge-secondary">N/A</span>';
+                    })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View Category') ? $row->getShowButtonAttribute() : '') . 
                         (auth()->user()->can('Update Category') ? $row->getEditButtonAttribute() : '') . 
                         (auth()->user()->can('Delete Category') ? $row->getDeleteButtonAttribute() : '');
                     })
-                    ->rawColumns(['name','action'])
+                    ->rawColumns(['name','action','active'])
                     ->make(true);
             }
         }

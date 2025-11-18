@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "name": "Maintenance Job Request",
+        "acronym": "MJR",
+        "description": null,
+        "sort_order": 0,
+        "deleted_at": null,
+        "created_at": "2025-11-18 01:20:31",
+        "updated_at": "2025-11-18 02:11:22",
+        "active": 1
+    },
+    {
+        "id": 2,
+        "name": "Other ICT Services",
+        "acronym": "OIS",
+        "description": null,
+        "sort_order": 0,
+        "deleted_at": null,
+        "created_at": "2025-11-18 01:21:37",
+        "updated_at": "2025-11-18 02:11:35",
+        "active": 1
+    }
+]

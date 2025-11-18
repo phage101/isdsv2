@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "name": "Pending",
+        "status_type": "helpdesk",
+        "status_color": null,
+        "status_hex": "#ffbd2e",
+        "deleted_at": null,
+        "created_at": "2025-11-18 05:08:45",
+        "updated_at": "2025-11-18 05:08:45",
+        "active": 1
+    }
+]

@@ -35,7 +35,15 @@
                     <label class="col-md-2 form-control-label">Active</label>
 
                     <div class="col-md-10">
-                        {{ html()->text('active')->class('form-control bg-white')->disabled()->value(isset($officeType->active) ? ($officeType->active ? 'Yes' : 'No') : '') }}
+                        @if(isset($officeType->active))
+                            @if($officeType->active)
+                                <span class="badge badge-success">Yes</span>
+                            @else
+                                <span class="badge badge-danger">No</span>
+                            @endif
+                        @else
+                            <span class="badge badge-secondary">N/A</span>
+                        @endif
                     </div><!--col-->
                 </div><!--form-group-->
             </div><!--col-->

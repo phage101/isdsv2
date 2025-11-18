@@ -59,7 +59,7 @@
                     <label class="col-md-2 form-control-label">Office Type</label>
 
                     <div class="col-md-10">
-                        {{ html()->text('office_type')->class('form-control bg-white')->disabled()->value(old('office_type', optional($office->officeType)->office_type ?? '')) }}
+                        {{ html()->text('office_type')->class('form-control bg-white')->disabled()->value(old('office_type', optional($office->officeType)->name ?? 'N/A')) }}
                     </div><!--col-->
                 </div><!--form-group-->
             </div><!--col-->
@@ -83,7 +83,15 @@
                     <label class="col-md-2 form-control-label">Active</label>
 
                     <div class="col-md-10">
-                        {{ html()->text('active')->class('form-control bg-white')->disabled()->value(isset($office->active) ? ($office->active ? 'Yes' : 'No') : '') }}
+                        @if(isset($office->active))
+                            @if($office->active)
+                                <span class="badge badge-success">Yes</span>
+                            @else
+                                <span class="badge badge-danger">No</span>
+                            @endif
+                        @else
+                            <span class="badge badge-secondary">N/A</span>
+                        @endif
                     </div><!--col-->
                 </div><!--form-group-->
             </div><!--col-->

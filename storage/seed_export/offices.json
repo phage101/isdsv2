@@ -1,0 +1,79 @@
+[
+    {
+        "id": 1,
+        "office_code": "DTI AKL",
+        "name": "Aklan Provincial Office",
+        "active": 1,
+        "office_types_id": 2,
+        "provinces_id": 1,
+        "deleted_at": null,
+        "created_at": "2025-11-18 01:07:52",
+        "updated_at": "2025-11-18 01:11:52"
+    },
+    {
+        "id": 2,
+        "office_code": "DTI ATQ",
+        "name": "Antique Provincial Office",
+        "active": 1,
+        "office_types_id": 2,
+        "provinces_id": 2,
+        "deleted_at": null,
+        "created_at": "2025-11-18 01:08:18",
+        "updated_at": "2025-11-18 01:12:02"
+    },
+    {
+        "id": 3,
+        "office_code": "DTI CAP",
+        "name": "Capiz Provincial Office",
+        "active": 1,
+        "office_types_id": 2,
+        "provinces_id": 3,
+        "deleted_at": null,
+        "created_at": "2025-11-18 01:08:38",
+        "updated_at": "2025-11-18 01:12:13"
+    },
+    {
+        "id": 4,
+        "office_code": "DTI GUI",
+        "name": "Guimaras Provincial Office",
+        "active": 1,
+        "office_types_id": 2,
+        "provinces_id": 4,
+        "deleted_at": null,
+        "created_at": "2025-11-18 01:08:59",
+        "updated_at": "2025-11-18 01:12:24"
+    },
+    {
+        "id": 5,
+        "office_code": "DTI ILO",
+        "name": "Iloilo Provincial Office",
+        "active": 1,
+        "office_types_id": 2,
+        "provinces_id": 5,
+        "deleted_at": null,
+        "created_at": "2025-11-18 01:10:40",
+        "updated_at": "2025-11-18 01:11:40"
+    },
+    {
+        "id": 6,
+        "office_code": "DTI NEG",
+        "name": "Negros Occidental Provincial Office",
+        "active": 1,
+        "office_types_id": 2,
+        "provinces_id": 6,
+        "deleted_at": null,
+        "created_at": "2025-11-18 01:11:13",
+        "updated_at": "2025-11-18 01:11:13"
+    },
+    {
+        "id": 7,
+        "office_code": "DTI RO",
+        "name": "Iloilo Regional Office",
+        "active": 1,
+        "office_types_id": 1,
+        "provinces_id": 5,
+        "deleted_at": null,
+        "created_at": "2025-11-18 01:13:12",
+        "updated_at": "2025-11-18 07:04:02"
+    }
+]

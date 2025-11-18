@@ -30,6 +30,8 @@ class StoreCategoryRequest extends FormRequest
         return [
             'request_types_id' => ['required', 'integer', 'exists:request_types,id'],
             'name'     => ['required', 'max:191'],
+            'description' => ['nullable', 'string'],
+            'active' => ['nullable', 'boolean'],
         ];
     }
 
