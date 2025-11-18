@@ -4,7 +4,7 @@ return [
     'table' => [
         'name'    => 'name',
         'description' => 'description',
-        'is_active' => 'active',
+        'active' => 'active',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -36,7 +36,7 @@ return [
         'attributes' => [
             'name' => 'name',
             'description' => 'description',
-            'is_active' => 'active',
+            'active' => 'active',
         ]
     ],
 
@@ -50,7 +50,7 @@ return [
             'overview' => [
                 'name'    => 'name',
                 'description' => 'description',
-                'is_active' => 'active',
+                'active' => 'active',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

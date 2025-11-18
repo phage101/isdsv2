@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             Schema::create('categories', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('request_types_id')->index();
-                $table->string('category', 191);
+                $table->string('name', 191);
                 $table->text('description')->nullable();
                 $table->boolean('is_active')->default(true);
                 $table->softDeletes();

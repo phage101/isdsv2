@@ -36,7 +36,7 @@
                         <tbody>
                         @foreach($categories as $category)
                             <tr>
-                                <td class="align-middle"><a href="/admin/categories/{{ $category->id }}">{{ $category->category }}</a></td>
+                                <td class="align-middle"><a href="/admin/categories/{{ $category->id }}">{{ $category->name }}</a></td>
                                 <td class="align-middle">{!! $category->created_at !!}</td>
                                 <td class="align-middle">{{ $category->deleted_at->diffForHumans() }}</td>
                                 <td class="align-middle">{!! $category->trashed_buttons !!}</td>

@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Backend\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 use App\Models\Auth\User;
-use App\Repositories\Backend\Auth\UserRepository;
+ use App\Exceptions\GeneralException;
+ use App\Repositories\Backend\Auth\UserRepository;
 
 /**
  * Class UserStatusController.
@@ -55,9 +56,44 @@ class UserStatusController extends Controller
      * @throws \App\Exceptions\GeneralException
      * @return mixed
      */
-    public function mark(ManageUserRequest $request, User $user, $status)
+    public function mark(ManageUserRequest $request, User $user, $status = null)
     {
-        $this->userRepository->mark($user, (int) $status);
+        // If the container did not inject the status parameter for some reason,
+        // fall back to grabbing it from the route parameters.
+        if ($status === null) {
+            $status = $request->route('status');
+            // Fallback: sometimes route parameters are not populated during tests
+            // (route('status') can be null). Parse the last path segment as a
+            // best-effort fallback when the route parameter is missing.
+            if ($status === null) {
+                $segments = explode('/', trim($request->path(), '/'));
+                $last = end($segments);
+                if (is_numeric($last)) {
+                    $status = (int) $last;
+                }
+            }
+        }
+        \Illuminate\Support\Facades\Log::error('UserStatusController::mark', [
+            'status_arg' => $status,
+            'route_status' => $request->route('status'),
+            'route_parameters' => $request->route() ? $request->route()->parameters() : null,
+            'path' => $request->path(),
+            'url' => $request->url(),
+            'all' => $request->all(),
+        ]);
+
+        // Log final resolved status for diagnostics
+        \Illuminate\Support\Facades\Log::info('UserStatusController::mark - final resolved status', [
+            'status' => $status,
+            'route_params' => $request->route() ? $request->route()->parameters() : null,
+            'path' => $request->path(),
+        ]);
+
+        try {
+            $this->userRepository->mark($user, (int) $status);
+        } catch (GeneralException $e) {
+            return redirect()->back()->with('flash_danger', $e->getMessage());
+        }
 
         return redirect()->route(
             (int) $status === 1 ?

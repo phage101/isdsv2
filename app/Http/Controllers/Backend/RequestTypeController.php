@@ -50,15 +50,15 @@ class RequestTypeController extends Controller
                 $query = RequestType::selectRaw('request_types.*');
 
                 return DataTables::of($query)
-                    ->editColumn('request_type', function ($row) {
-                        return '<span class="sortable"><a href="' . route('admin.request_types.show', $row) . '">' . e($row->request_type) . "</a></span>";
+                    ->editColumn('name', function ($row) {
+                        return '<span class="sortable"><a href="' . route('admin.request_types.show', $row) . '">' . e($row->name) . "</a></span>";
                     })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View RequestType') ? $row->getShowButtonAttribute() : '') . 
                         (auth()->user()->can('Update RequestType') ? $row->getEditButtonAttribute() : '') . 
                         (auth()->user()->can('Delete RequestType') ? $row->getDeleteButtonAttribute() : '');
                     })
-                    ->rawColumns(['request_type','action'])
+                    ->rawColumns(['name','action'])
                     ->make(true);
             }
         }

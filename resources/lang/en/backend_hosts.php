@@ -3,7 +3,7 @@
 return [
     'table' => [
         'name'    => 'name',
-        'is_active' => 'active',
+        'active' => 'active',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -34,7 +34,7 @@ return [
     'validation' => [
         'attributes' => [
             'name' => 'name',
-            'is_active' => 'active',
+            'active' => 'active',
         ]
     ],
 
@@ -47,7 +47,7 @@ return [
         'content'   => [
             'overview' => [
                 'name'    => 'name',
-                'is_active' => 'active',
+                'active' => 'active',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

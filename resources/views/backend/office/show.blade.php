@@ -29,6 +29,65 @@
                 </div><!--form-group-->
             </div><!--col-->
         </div><!--row-->
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label">Office Code</label>
+
+                    <div class="col-md-10">
+                        {{ html()->text('office_code')->class('form-control bg-white')->disabled()->value(old('office_code', $office->office_code ?? '')) }}
+                    </div><!--col-->
+                </div><!--form-group-->
+            </div><!--col-->
+        </div><!--row-->
+
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label">Name</label>
+
+                    <div class="col-md-10">
+                        {{ html()->text('name')->class('form-control bg-white')->disabled()->value(old('name', $office->name ?? '')) }}
+                    </div><!--col-->
+                </div><!--form-group-->
+            </div><!--col-->
+        </div><!--row-->
+
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label">Office Type</label>
+
+                    <div class="col-md-10">
+                        {{ html()->text('office_type')->class('form-control bg-white')->disabled()->value(old('office_type', optional($office->officeType)->office_type ?? '')) }}
+                    </div><!--col-->
+                </div><!--form-group-->
+            </div><!--col-->
+        </div><!--row-->
+
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label">Province</label>
+
+                    <div class="col-md-10">
+                        {{ html()->text('province')->class('form-control bg-white')->disabled()->value(old('province', optional($office->province)->name ?? '')) }}
+                    </div><!--col-->
+                </div><!--form-group-->
+            </div><!--col-->
+        </div><!--row-->
+
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label">Active</label>
+
+                    <div class="col-md-10">
+                        {{ html()->text('active')->class('form-control bg-white')->disabled()->value(isset($office->active) ? ($office->active ? 'Yes' : 'No') : '') }}
+                    </div><!--col-->
+                </div><!--form-group-->
+            </div><!--col-->
+        </div><!--row-->
     </div><!--card-body-->
 
     <div class="card-footer">

@@ -16,7 +16,7 @@ class CreateRequestTypesTable extends Migration
         if (!Schema::hasTable('request_types')) {
             Schema::create('request_types', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->string('request_type', 191);
+                $table->string('name', 191);
                 $table->string('acronym', 50)->nullable();
                 $table->text('description')->nullable();
                 $table->integer('sort_order')->default(0);

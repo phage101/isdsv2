@@ -66,11 +66,11 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label">@lang('backend_statuses.validation.attributes.is_active')</label>
+                        <label class="col-md-2 form-control-label">@lang('backend_statuses.validation.attributes.active')</label>
                         <div class="col-md-10">
                             <div class="form-check">
-                                <input type="checkbox" name="is_active" value="1" class="form-check-input" id="is_active" @if(old('is_active', $status->is_active)) checked @endif>
-                                <label class="form-check-label" for="is_active">@lang('strings.yes')</label>
+                                <input type="checkbox" name="active" value="1" class="form-check-input" id="active" @if(old('active', $status->active)) checked @endif>
+                                <label class="form-check-label" for="active">@lang('strings.yes')</label>
                             </div>
                         </div>
                     </div>

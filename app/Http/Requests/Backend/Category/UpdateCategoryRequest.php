@@ -29,7 +29,7 @@ class UpdateCategoryRequest extends FormRequest
     {
         return [
             'request_types_id' => ['required', 'integer', 'exists:request_types,id'],
-            'category'     => ['required', 'max:191'],
+            'name'     => ['required', 'max:191'],
         ];
     }
 
@@ -43,8 +43,8 @@ class UpdateCategoryRequest extends FormRequest
         return [
             'request_types_id.required' => 'Please select a Request Type.',
             'request_types_id.exists'   => 'Selected Request Type is invalid.',
-            'category.required'    => 'The :attribute field is required.',
-            'category.max'         => 'The :attribute field must have less than :max characters',
+            'name.required'    => 'The :attribute field is required.',
+            'name.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

@@ -32,14 +32,33 @@
                 </div><!--form-group-->
 
                     <div class="form-group row">
-                    {{ html()->label(__('backend_categories.validation.attributes.category'))->class('col-md-2 form-control-label')->for('category') }}
+                    {{ html()->label(__('backend_categories.validation.attributes.category'))->class('col-md-2 form-control-label')->for('name') }}
 
                         <div class="col-md-10">
-                            {{ html()->text('category')
+                            {{ html()->text('name')
                                 ->class('form-control')
                                 ->placeholder(__('backend_categories.validation.attributes.category'))
                                 ->attribute('maxlength', 191)
                                 ->required() }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                    {{ html()->label('Description')->class('col-md-2 form-control-label')->for('description') }}
+
+                        <div class="col-md-10">
+                            {{ html()->textarea('description')
+                                ->class('form-control')
+                                ->placeholder('Description')
+                                ->value(old('description', $category->description)) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                    {{ html()->label('Active')->class('col-md-2 form-control-label')->for('active') }}
+
+                        <div class="col-md-10">
+                            {{ html()->select('active', [1 => 'Yes', 0 => 'No'], old('active', $category->active ? 1 : 0))->class('form-control') }}
                         </div><!--col-->
                     </div><!--form-group-->
                 </div><!--col-->

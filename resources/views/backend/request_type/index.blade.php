@@ -86,8 +86,8 @@
             pageLength: 10,
             ajax: "{{ route('admin.request_types.index') }}",
             columns: [{
-                    data: 'request_type',
-                    name: 'request_type'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
                     data: 'action',

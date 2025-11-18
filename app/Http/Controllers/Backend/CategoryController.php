@@ -51,15 +51,15 @@ class CategoryController extends Controller
                 $query = Category::selectRaw('categories.*');
 
                 return DataTables::of($query)
-                    ->editColumn('category', function ($row) {
-                        return '<span class="sortable"><a href="' . route('admin.categories.show', $row) . '">' . e($row->category) . "</a></span>";
+                    ->editColumn('name', function ($row) {
+                        return '<span class="sortable"><a href="' . route('admin.categories.show', $row) . '">' . e($row->name) . "</a></span>";
                     })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View Category') ? $row->getShowButtonAttribute() : '') . 
                         (auth()->user()->can('Update Category') ? $row->getEditButtonAttribute() : '') . 
                         (auth()->user()->can('Delete Category') ? $row->getDeleteButtonAttribute() : '');
                     })
-                    ->rawColumns(['category','action'])
+                    ->rawColumns(['name','action'])
                     ->make(true);
             }
         }
@@ -77,7 +77,7 @@ class CategoryController extends Controller
      */
     public function create(ManageCategoryRequest $request)
     {
-        $requestTypes = RequestType::orderBy('request_type')->pluck('request_type', 'id');
+        $requestTypes = RequestType::orderBy('name')->pluck('name', 'id');
         return view('backend.category.create')->withRequestTypes($requestTypes);
     }
 
@@ -123,7 +123,7 @@ class CategoryController extends Controller
      */
     public function edit(ManageCategoryRequest $request, Category $category)
     {
-        $requestTypes = RequestType::orderBy('request_type')->pluck('request_type', 'id');
+        $requestTypes = RequestType::orderBy('name')->pluck('name', 'id');
         return view('backend.category.edit')->withCategory($category)->withRequestTypes($requestTypes);
     }
 

@@ -24,14 +24,56 @@
             <div class="row mt-4 mb-4">
                 <div class="col">
                     <div class="form-group row">
-                    {{ html()->label(__('backend_request_types.validation.attributes.request_type'))->class('col-md-2 form-control-label')->for('request_type') }}
+                    {{ html()->label(__('backend_request_types.validation.attributes.request_type'))->class('col-md-2 form-control-label')->for('name') }}
 
                         <div class="col-md-10">
-                            {{ html()->text('request_type')
+                            {{ html()->text('name')
                                 ->class('form-control')
                                 ->placeholder(__('backend_request_types.validation.attributes.request_type'))
                                 ->attribute('maxlength', 191)
                                 ->required() }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                    {{ html()->label('Acronym')->class('col-md-2 form-control-label')->for('acronym') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('acronym')
+                                ->class('form-control')
+                                ->placeholder('Acronym')
+                                ->attribute('maxlength', 50)
+                                ->value(old('acronym', $requestType->acronym)) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                    {{ html()->label('Description')->class('col-md-2 form-control-label')->for('description') }}
+
+                        <div class="col-md-10">
+                            {{ html()->textarea('description')
+                                ->class('form-control')
+                                ->placeholder('Description')
+                                ->value(old('description', $requestType->description)) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                    {{ html()->label('Sort Order')->class('col-md-2 form-control-label')->for('sort_order') }}
+
+                        <div class="col-md-10">
+                            {{ html()->number('sort_order')
+                                ->class('form-control')
+                                ->placeholder('Sort Order')
+                                ->value(old('sort_order', $requestType->sort_order)) }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                    {{ html()->label('Active')->class('col-md-2 form-control-label')->for('active') }}
+
+                        <div class="col-md-10">
+                            {{ html()->select('active', [1 => 'Yes', 0 => 'No'], old('active', $requestType->active ? 1 : 0))->class('form-control') }}
                         </div><!--col-->
                     </div><!--form-group-->
                 </div><!--col-->

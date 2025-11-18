@@ -29,7 +29,7 @@ class UpdateSubCategoryRequest extends FormRequest
     {
         return [
             'categories_id' => ['required', 'integer', 'exists:categories,id'],
-            'sub_category'     => ['required', 'max:191'],
+            'name'     => ['required', 'max:191'],
         ];
     }
 
@@ -43,8 +43,8 @@ class UpdateSubCategoryRequest extends FormRequest
         return [
             'categories_id.required' => 'Please select a Category.',
             'categories_id.exists'   => 'Selected Category is invalid.',
-            'sub_category.required'    => 'The :attribute field is required.',
-            'sub_category.max'         => 'The :attribute field must have less than :max characters',
+            'name.required'    => 'The :attribute field is required.',
+            'name.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

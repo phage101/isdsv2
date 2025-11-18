@@ -86,8 +86,8 @@
             pageLength: 10,
             ajax: "{{ route('admin.categories.index') }}",
             columns: [{
-                    data: 'category',
-                    name: 'category'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
                     data: 'action',

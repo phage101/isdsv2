@@ -36,7 +36,7 @@
                         <tbody>
                         @foreach($requestTypes as $requestType)
                             <tr>
-                                <td class="align-middle"><a href="/admin/request_types/{{ $requestType->id }}">{{ $requestType->request_type }}</a></td>
+                                <td class="align-middle"><a href="/admin/request_types/{{ $requestType->id }}">{{ $requestType->name }}</a></td>
                                 <td class="align-middle">{!! $requestType->created_at !!}</td>
                                 <td class="align-middle">{{ $requestType->deleted_at->diffForHumans() }}</td>
                                 <td class="align-middle">{!! $requestType->trashed_buttons !!}</td>

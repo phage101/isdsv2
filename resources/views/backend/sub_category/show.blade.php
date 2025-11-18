@@ -21,12 +21,32 @@
         <div class="row mt-4 mb-4">
             <div class="col">
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="sub_category">Sub Category</label>
-
+                    <label class="col-md-2 form-control-label" for="categories_id">Category</label>
                     <div class="col-md-10">
-                        {{ html()->text('sub_category')->class('form-control bg-white')->disabled()->value(old('sub_category', $subCategory->sub_category)) }}
-                    </div><!--col-->
-                </div><!--form-group-->
+                        {{ html()->text('category')->class('form-control bg-white')->disabled()->value(old('category', optional(\App\Models\Category::find($subCategory->categories_id))->name)) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="name">Sub Category</label>
+                    <div class="col-md-10">
+                        {{ html()->text('name')->class('form-control bg-white')->disabled()->value(old('name', $subCategory->name)) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="description">Description</label>
+                    <div class="col-md-10">
+                        {{ html()->textarea('description')->class('form-control bg-white')->disabled()->value(old('description', $subCategory->description)) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="active">Active</label>
+                    <div class="col-md-10">
+                        {{ html()->text('active')->class('form-control bg-white')->disabled()->value($subCategory->active ? 'Yes' : 'No') }}
+                    </div>
+                </div>
             </div><!--col-->
         </div><!--row-->
     </div><!--card-body-->

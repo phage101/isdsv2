@@ -18,6 +18,7 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Repositories\BaseRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class UserRepository.
@@ -205,11 +206,21 @@ class UserRepository extends BaseRepository
      */
     public function mark(User $user, $status): User
     {
+        Log::error('UserRepository::mark', ['status' => $status, 'auth_id' => auth()->id(), 'target_id' => $user->id]);
+
+        // Coerce status to integer to avoid issues with string/null values
+        $status = (int) $status;
+
+        Log::error('UserRepository::mark - coerced status', ['status' => $status]);
+
         if ($status === 0 && auth()->id() === $user->id) {
+            Log::error('UserRepository::mark - trying to deactivate self', ['auth_id' => auth()->id(), 'target_id' => $user->id]);
             throw new GeneralException(__('exceptions.backend.access.users.cant_deactivate_self'));
         }
 
         $user->active = $status;
+
+        Log::error('UserRepository::mark - attributes before events', $user->getAttributes());
 
         switch ($status) {
             case 0:
@@ -220,7 +231,10 @@ class UserRepository extends BaseRepository
             break;
         }
 
-        if ($user->save()) {
+        $saved = $user->save();
+        Log::error('UserRepository::mark - save result', ['saved' => $saved, 'attributes' => $user->getAttributes()]);
+
+        if ($saved) {
             return $user;
         }
 

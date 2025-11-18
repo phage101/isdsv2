@@ -31,7 +31,7 @@
                                 <th>@lang('backend_statuses.table.status_type')</th>
                                 <th>@lang('backend_statuses.table.status_color')</th>
                                 <th>@lang('backend_statuses.table.status_hex')</th>
-                                <th>@lang('backend_statuses.table.is_active')</th>
+                                <th>@lang('backend_statuses.table.active')</th>
                                 <th style="width:0%">@lang('backend_statuses.table.actions')</th>
                             </tr>
                         </thead>
@@ -47,9 +47,7 @@
 @push('after-scripts')
 <script>
     if (typeof jQuery == 'undefined') {
-
         console.log('jQuery not loaded.');
-
     }
     $(function() {
         $('#statuses_table').DataTable({
@@ -108,8 +106,8 @@
                     searchable: false
                 },
                 {
-                    data: 'is_active',
-                    name: 'is_active',
+                    data: 'active',
+                    name: 'active',
                     searchable: false
                 },
                 {

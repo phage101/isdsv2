@@ -51,15 +51,15 @@ class SubCategoryController extends Controller
                 $query = SubCategory::selectRaw('sub_categories.*');
 
                 return DataTables::of($query)
-                    ->editColumn('sub_category', function ($row) {
-                        return '<span class="sortable"><a href="' . route('admin.sub_categories.show', $row) . '">' . e($row->sub_category) . "</a></span>";
+                    ->editColumn('name', function ($row) {
+                        return '<span class="sortable"><a href="' . route('admin.sub_categories.show', $row) . '">' . e($row->name) . "</a></span>";
                     })
                     ->addColumn('action', function ($row) {
                         return (auth()->user()->can('View SubCategory') ? $row->getShowButtonAttribute() : '') . 
                         (auth()->user()->can('Update SubCategory') ? $row->getEditButtonAttribute() : '') . 
                         (auth()->user()->can('Delete SubCategory') ? $row->getDeleteButtonAttribute() : '');
                     })
-                    ->rawColumns(['sub_category','action'])
+                    ->rawColumns(['name','action'])
                     ->make(true);
             }
         }
@@ -77,7 +77,7 @@ class SubCategoryController extends Controller
      */
     public function create(ManageSubCategoryRequest $request)
     {
-        $categories = Category::orderBy('category')->pluck('category', 'id');
+        $categories = Category::orderBy('name')->pluck('name', 'id');
         return view('backend.sub_category.create')->withCategories($categories);
     }
 
@@ -123,7 +123,7 @@ class SubCategoryController extends Controller
      */
     public function edit(ManageSubCategoryRequest $request, SubCategory $subCategory)
     {
-        $categories = Category::orderBy('category')->pluck('category', 'id');
+        $categories = Category::orderBy('name')->pluck('name', 'id');
         return view('backend.sub_category.edit')->withSubCategory($subCategory)->withCategories($categories);
     }
 

@@ -6,7 +6,7 @@ return [
         'status_type' => 'type',
         'status_color' => 'color',
         'status_hex' => 'hex',
-        'is_active' => 'active',
+        'active' => 'active',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -40,7 +40,7 @@ return [
             'status_type' => 'type',
             'status_color' => 'color',
             'status_hex' => 'hex',
-            'is_active' => 'active',
+            'active' => 'active',
         ]
     ],
 
@@ -56,7 +56,7 @@ return [
                 'status_type' => 'type',
                 'status_color' => 'color',
                 'status_hex' => 'hex',
-                'is_active' => 'active',
+                'active' => 'active',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

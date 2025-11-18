@@ -29,6 +29,17 @@
                 </div><!--form-group-->
             </div><!--col-->
         </div><!--row-->
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label">Active</label>
+
+                    <div class="col-md-10">
+                        {{ html()->text('active')->class('form-control bg-white')->disabled()->value(isset($officeType->active) ? ($officeType->active ? 'Yes' : 'No') : '') }}
+                    </div><!--col-->
+                </div><!--form-group-->
+            </div><!--col-->
+        </div><!--row-->
     </div><!--card-body-->
 
     <div class="card-footer">

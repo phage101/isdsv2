@@ -28,7 +28,7 @@
                         <thead>
                             <tr>
                                 <th>@lang('backend_media.table.name')</th>
-                                <th>@lang('backend_media.table.is_active')</th>
+                                <th>@lang('backend_media.table.active')</th>
                                 <th style="width:0%">@lang('backend_media.table.actions')</th>
                             </tr>
                         </thead>
@@ -44,9 +44,7 @@
 @push('after-scripts')
 <script>
     if (typeof jQuery == 'undefined') {
-
         console.log('jQuery not loaded.');
-
     }
     $(function() {
         $('#media_table').DataTable({
@@ -91,8 +89,8 @@
                     name: 'name'
                 },
                 {
-                    data: 'is_active',
-                    name: 'is_active',
+                    data: 'active',
+                    name: 'active',
                     searchable: false
                 },
                 {

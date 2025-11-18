@@ -17,7 +17,7 @@ class CreateSubCategoriesTable extends Migration
             Schema::create('sub_categories', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('categories_id')->index();
-                $table->string('sub_category', 191);
+                $table->string('name', 191);
                 $table->text('description')->nullable();
                 $table->boolean('is_active')->default(true);
                 $table->softDeletes();

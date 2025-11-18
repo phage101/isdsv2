@@ -29,7 +29,7 @@
                             <div class="col-md-10">
                                 {{ html()->text('first_name')
                                     ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.access.users.first_name'))
+                                    ->attribute('placeholder', __('validation.attributes.backend.access.users.first_name'))
                                     ->attribute('maxlength', 191)
                                     ->required()
                                     ->autofocus() }}
@@ -42,7 +42,7 @@
                             <div class="col-md-10">
                                 {{ html()->text('last_name')
                                     ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.access.users.last_name'))
+                                    ->attribute('placeholder', __('validation.attributes.backend.access.users.last_name'))
                                     ->attribute('maxlength', 191)
                                     ->required() }}
                             </div><!--col-->
@@ -54,7 +54,7 @@
                             <div class="col-md-10">
                                 {{ html()->email('email')
                                     ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.access.users.email'))
+                                    ->attribute('placeholder', __('validation.attributes.backend.access.users.email'))
                                     ->attribute('maxlength', 191)
                                     ->required() }}
                             </div><!--col-->
@@ -66,7 +66,7 @@
                             <div class="col-md-10">
                                 {{ html()->text('id_number')
                                     ->class('form-control')
-                                    ->placeholder('ID Number')
+                                    ->attribute('placeholder', 'ID Number')
                                     ->attribute('maxlength', 191) }}
                             </div><!--col-->
                         </div><!--form-group-->
@@ -77,7 +77,7 @@
                             <div class="col-md-10">
                                 {{ html()->date('date_birth')
                                     ->class('form-control')
-                                    ->placeholder('Date of Birth') }}
+                                    ->attribute('placeholder', 'Date of Birth') }}
                             </div><!--col-->
                         </div><!--form-group-->
 
@@ -87,7 +87,7 @@
                             <div class="col-md-10">
                                 {{ html()->select('sex', ['Male' => 'Male', 'Female' => 'Female'], null)
                                     ->class('form-control')
-                                    ->placeholder('Select Sex') }}
+                                    ->attribute('placeholder', 'Select Sex') }}
                             </div><!--col-->
                         </div><!--form-group-->
 
@@ -108,7 +108,7 @@
                             <div class="col-md-10">
                                 {{ html()->tel('phone')
                                     ->class('form-control')
-                                    ->placeholder('Phone Number')
+                                    ->attribute('placeholder', 'Phone Number')
                                     ->attribute('maxlength', 191) }}
                             </div><!--col-->
                         </div><!--form-group-->
@@ -119,7 +119,7 @@
                             <div class="col-md-10">
                                 {{ html()->textarea('address')
                                     ->class('form-control')
-                                    ->placeholder('Address')
+                                    ->attribute('placeholder', 'Address')
                                     ->rows(3) }}
                             </div><!--col-->
                         </div><!--form-group-->
@@ -130,7 +130,7 @@
                             <div class="col-md-10">
                                 {{ html()->text('designation')
                                     ->class('form-control')
-                                    ->placeholder('Designation')
+                                    ->attribute('placeholder', 'Designation')
                                     ->attribute('maxlength', 191) }}
                             </div><!--col-->
                         </div><!--form-group-->
@@ -141,7 +141,7 @@
                             <div class="col-md-10">
                                 {{ html()->password('password')
                                     ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.access.users.password'))
+                                    ->attribute('placeholder', __('validation.attributes.backend.access.users.password'))
                                     ->required() }}
                             </div><!--col-->
                         </div><!--form-group-->
@@ -152,7 +152,7 @@
                             <div class="col-md-10">
                                 {{ html()->password('password_confirmation')
                                     ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.access.users.password_confirmation'))
+                                    ->attribute('placeholder', __('validation.attributes.backend.access.users.password_confirmation'))
                                     ->required() }}
                             </div><!--col-->
                         </div><!--form-group-->

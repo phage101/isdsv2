@@ -29,6 +29,29 @@
                 </div><!--form-group-->
             </div><!--col-->
         </div><!--row-->
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="name">@lang('backend_provinces.tabs.content.overview.name')</label>
+
+                    <div class="col-md-10">
+                        {{ html()->text('name')->class('form-control bg-white')->disabled()->value(old('name', $province->name ?? '')) }}
+                    </div><!--col-->
+                </div><!--form-group-->
+            </div><!--col-->
+        </div><!--row-->
+
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="active">@lang('backend_provinces.tabs.content.overview.active')</label>
+
+                    <div class="col-md-10">
+                        {{ html()->text('active')->class('form-control bg-white')->disabled()->value(isset($province->active) ? ($province->active ? 'Yes' : 'No') : '') }}
+                    </div><!--col-->
+                </div><!--form-group-->
+            </div><!--col-->
+        </div><!--row-->
     </div><!--card-body-->
 
     <div class="card-footer">

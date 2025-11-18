@@ -28,7 +28,7 @@ class UpdateRequestTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'request_type'     => ['required', 'max:191'],
+            'name'     => ['required', 'max:191'],
         ];
     }
 
@@ -40,8 +40,8 @@ class UpdateRequestTypeRequest extends FormRequest
     public function messages()
     {
         return [
-            'request_type.required'    => 'The :attribute field is required.',
-            'request_type.max'         => 'The :attribute field must have less than :max characters',
+            'name.required'    => 'The :attribute field is required.',
+            'name.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

@@ -83,6 +83,19 @@ class DataTablesService
 
         foreach ($results as $row) {
             $item = $row->toArray();
+            // Ensure 'active' key exists for frontend compatibility.
+            // If the DB/model still uses 'is_active' we map it to 'active'.
+            if (!array_key_exists('active', $item)) {
+                if (array_key_exists('is_active', $item)) {
+                    $item['active'] = (int) $item['is_active'];
+                } elseif (isset($row->active)) {
+                    $item['active'] = (int) $row->active;
+                } elseif (isset($row->is_active)) {
+                    $item['active'] = (int) $row->is_active;
+                } else {
+                    $item['active'] = null;
+                }
+            }
             
             // Process edited columns (replace existing)
             foreach ($this->columns as $column => $spec) {

@@ -29,7 +29,7 @@
                             <tr>
                                 <th>@lang('backend_priority_levels.table.name')</th>
                                 <th>@lang('backend_priority_levels.table.description')</th>
-                                <th>@lang('backend_priority_levels.table.is_active')</th>
+                                <th>@lang('backend_priority_levels.table.active')</th>
                                 <th style="width:0%">@lang('backend_priority_levels.table.actions')</th>
                             </tr>
                         </thead>
@@ -96,8 +96,8 @@
                     name: 'description'
                 },
                 {
-                    data: 'is_active',
-                    name: 'is_active',
+                    data: 'active',
+                    name: 'active',
                     searchable: false
                 },
                 {

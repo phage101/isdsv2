@@ -52,10 +52,10 @@
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label">@lang('backend_statuses.tabs.content.overview.is_active')</label>
+                    <label class="col-md-2 form-control-label">@lang('backend_statuses.tabs.content.overview.active')</label>
 
                     <div class="col-md-10">
-                        <div class="form-control bg-white">@if($status->is_active) @lang('strings.yes') @else @lang('strings.no') @endif</div>
+                        <div class="form-control bg-white">@if($status->active) @lang('strings.yes') @else @lang('strings.no') @endif</div>
                     </div><!--col-->
                 </div><!--form-group-->
             </div><!--col-->

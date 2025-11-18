@@ -21,12 +21,40 @@
         <div class="row mt-4 mb-4">
             <div class="col">
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="request_type">Request Type</label>
+                    <label class="col-md-2 form-control-label" for="name">Request Type</label>
 
                     <div class="col-md-10">
-                        {{ html()->text('request_type')->class('form-control bg-white')->disabled()->value(old('request_type', $requestType->request_type)) }}
+                        {{ html()->text('name')->class('form-control bg-white')->disabled()->value(old('name', $requestType->name)) }}
                     </div><!--col-->
                 </div><!--form-group-->
+
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="acronym">Acronym</label>
+                    <div class="col-md-10">
+                        {{ html()->text('acronym')->class('form-control bg-white')->disabled()->value(old('acronym', $requestType->acronym)) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="description">Description</label>
+                    <div class="col-md-10">
+                        {{ html()->textarea('description')->class('form-control bg-white')->disabled()->value(old('description', $requestType->description)) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="sort_order">Sort Order</label>
+                    <div class="col-md-10">
+                        {{ html()->text('sort_order')->class('form-control bg-white')->disabled()->value(old('sort_order', $requestType->sort_order)) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 form-control-label" for="active">Active</label>
+                    <div class="col-md-10">
+                        {{ html()->text('active')->class('form-control bg-white')->disabled()->value($requestType->active ? 'Yes' : 'No') }}
+                    </div>
+                </div>
             </div><!--col-->
         </div><!--row-->
     </div><!--card-body-->
