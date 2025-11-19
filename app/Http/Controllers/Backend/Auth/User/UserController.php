@@ -11,6 +11,7 @@ use App\Models\Auth\User;
 use App\Repositories\Backend\Auth\PermissionRepository;
 use App\Repositories\Backend\Auth\RoleRepository;
 use App\Repositories\Backend\Auth\UserRepository;
+use DataTables;
 
 /**
  * Class UserController.
@@ -39,6 +40,53 @@ class UserController extends Controller
      */
     public function index(ManageUserRequest $request)
     {
+        if ($request->ajax()) {
+            if ($request->has('draw')) {
+                $query = User::with('roles', 'permissions');
+
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('first_name', 'like', "%{$search}%")
+                          ->orWhere('last_name', 'like', "%{$search}%")
+                          ->orWhere('email', 'like', "%{$search}%");
+                }
+
+                return DataTables::of($query)
+                    ->addColumn('last_name', function ($row) {
+                        return $row->last_name;
+                    })
+                    ->addColumn('first_name', function ($row) {
+                        return $row->first_name;
+                    })
+                    ->addColumn('email', function ($row) {
+                        return $row->email;
+                    })
+                    ->editColumn('confirmed', function ($row) {
+                        return $row->confirmed ? '<span class="badge badge-success">'.__('labels.general.yes').'</span>' : '<span class="badge badge-danger">'.__('labels.general.no').'</span>';
+                    })
+                    ->addColumn('roles_label', function ($row) {
+                        return $row->roles_label;
+                    })
+                    ->addColumn('permissions_label', function ($row) {
+                        return $row->permissions_label;
+                    })
+                    ->addColumn('social', function ($row) {
+                        return '';
+                    })
+                    ->editColumn('updated_at', function ($row) {
+                        return $row->updated_at->diffForHumans();
+                    })
+                    ->addColumn('action', function ($row) {
+                        return (auth()->user()->can('View User') ? $row->getShowButtonAttribute() : '') .
+                        (auth()->user()->can('Update User') ? $row->getEditButtonAttribute() : '') .
+                        (auth()->user()->can('Delete User') ? $row->getDeleteButtonAttribute() : '');
+                    })
+                    ->rawColumns(['confirmed','action'])
+                    ->make(true);
+            }
+        }
+
         return view('backend.auth.user.index')
             ->withUsers($this->userRepository->getActivePaginated(25, 'id', 'asc'));
     }

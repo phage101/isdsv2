@@ -10,6 +10,7 @@ use App\Http\Requests\Backend\Auth\Role\UpdateRoleRequest;
 use App\Models\Auth\Role;
 use App\Repositories\Backend\Auth\PermissionRepository;
 use App\Repositories\Backend\Auth\RoleRepository;
+use DataTables;
 
 /**
  * Class RoleController.
@@ -43,6 +44,46 @@ class RoleController extends Controller
      */
     public function index(ManageRoleRequest $request)
     {
+        if ($request->ajax()) {
+            if ($request->has('draw')) {
+                $query = Role::with('permissions', 'users');
+
+                // Handle search
+                if ($request->has('search') && !empty($request->get('search')['value'])) {
+                    $search = $request->get('search')['value'];
+                    $query->where('name', 'like', "%{$search}%");
+                }
+
+                return DataTables::of($query)
+                    ->editColumn('name', function ($row) {
+                        return ucwords($row->name);
+                    })
+                    ->addColumn('permissions', function ($row) {
+                        if ($row->id === 1) {
+                            return __('labels.general.all');
+                        } else {
+                            if ($row->permissions->count()) {
+                                $perms = $row->permissions->pluck('name')->map(function($p) {
+                                    return ucwords($p);
+                                })->all();
+                                return implode(', ', $perms);
+                            } else {
+                                return __('labels.general.none');
+                            }
+                        }
+                    })
+                    ->addColumn('users_count', function ($row) {
+                        return "<center>".$row->users->count()."</center>";
+                    })
+                    ->addColumn('action', function ($row) {
+                        return (auth()->user()->can('Update Role') ? $row->getEditButtonAttribute() : '') .
+                        (auth()->user()->can('Delete Role') ? $row->getDeleteButtonAttribute() : '');
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+            }
+        }
+
         return view('backend.auth.role.index')
             ->withRoles($this->roleRepository
             ->with('users', 'permissions')
