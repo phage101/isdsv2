@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel '.app()->version().' Boilerplate'),
+    'name' => env('APP_NAME', 'ISDS '.app()->version().' V2.0'),
 
     /*
     |--------------------------------------------------------------------------
