@@ -17,20 +17,11 @@ class CreateDivisionsTable extends Migration
             Schema::create('divisions', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('name');
+                $table->string('division_code', 100)->nullable();
+                $table->boolean('active')->default(true);
                 $table->softDeletes();
                 $table->timestamps();
             });
-
-            // Insert permissions into the permissions table
-            $permissions = [
-                ['name' => 'View Division', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Store Division', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Update Division', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Delete Division', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ];
-
-            // Use DB facade to insert permissions
-            DB::table('permissions')->insert($permissions);
         }
     }
 
@@ -41,6 +32,9 @@ class CreateDivisionsTable extends Migration
      */
     public function down()
     {
+        // Disable foreign key constraints temporarily
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('divisions');
 
         // Remove permissions
@@ -52,5 +46,8 @@ class CreateDivisionsTable extends Migration
                 'Delete Division'
             ])
             ->delete();
+        
+        // Re-enable foreign key constraints
+        Schema::enableForeignKeyConstraints();
     }
 }

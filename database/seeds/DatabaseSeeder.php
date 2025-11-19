@@ -23,7 +23,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(AuthTableSeeder::class);
-        $this->call(CategoriesAndSubCategoriesSeeder::class);
+        $this->call(PermissionsTableSeeder::class);
+        $this->call(ProvincesTableSeeder::class);
+        $this->call(OfficeTypesTableSeeder::class);
+        $this->call(OfficesTableSeeder::class);
+        $this->call(DivisionsTableSeeder::class);
+        $this->call(ClientTypesTableSeeder::class);
+        $this->call(RequestTypesTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(SubCategoriesTableSeeder::class);
+        $this->call(PriorityLevelsTableSeeder::class);
+        $this->call(StatusesTableSeeder::class);
+        $this->call(MediaTableSeeder::class);
+        $this->call(HostsTableSeeder::class);
 
         Model::reguard();
     }

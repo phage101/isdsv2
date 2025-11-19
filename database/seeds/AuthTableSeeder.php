@@ -30,6 +30,10 @@ class AuthTableSeeder extends Seeder
             'password_histories',
             'password_resets',
             'social_accounts',
+            'helpdesk_assignments',
+            'helpdesk_histories',
+            'helpdesks',
+            'media',
         ]);
 
         $this->call(UserTableSeeder::class);

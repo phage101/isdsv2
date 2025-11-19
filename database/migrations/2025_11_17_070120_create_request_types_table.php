@@ -20,21 +20,10 @@ class CreateRequestTypesTable extends Migration
                 $table->string('acronym', 50)->nullable();
                 $table->text('description')->nullable();
                 $table->integer('sort_order')->default(0);
-                $table->boolean('is_active')->default(true);
+                $table->boolean('active')->default(true);
                 $table->softDeletes();
                 $table->timestamps();
             });
-
-            // Insert permissions into the permissions table
-            $permissions = [
-                ['name' => 'View RequestType', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Store RequestType', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Update RequestType', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Delete RequestType', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ];
-
-            // Use DB facade to insert permissions
-            DB::table('permissions')->insert($permissions);
         }
     }
 
@@ -45,6 +34,9 @@ class CreateRequestTypesTable extends Migration
      */
     public function down()
     {
+        // Disable foreign key constraints temporarily
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('request_types');
 
         // Remove permissions
@@ -56,5 +48,8 @@ class CreateRequestTypesTable extends Migration
                 'Delete RequestType'
             ])
             ->delete();
+        
+        // Re-enable foreign key constraints
+        Schema::enableForeignKeyConstraints();
     }
 }

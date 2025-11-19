@@ -17,21 +17,10 @@ class CreateHostsTable extends Migration
             Schema::create('hosts', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('name');
-                $table->boolean('is_active')->default(true);
+                $table->boolean('active')->default(true);
                 $table->softDeletes();
                 $table->timestamps();
             });
-
-            // Insert permissions into the permissions table
-            $permissions = [
-                ['name' => 'View Host', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Store Host', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Update Host', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Delete Host', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ];
-
-            // Use DB facade to insert permissions
-            DB::table('permissions')->insert($permissions);
         }
     }
 
@@ -42,6 +31,9 @@ class CreateHostsTable extends Migration
      */
     public function down()
     {
+        // Disable foreign key constraints temporarily
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('hosts');
 
         // Remove permissions
@@ -53,5 +45,8 @@ class CreateHostsTable extends Migration
                 'Delete Host'
             ])
             ->delete();
+        
+        // Re-enable foreign key constraints
+        Schema::enableForeignKeyConstraints();
     }
 }

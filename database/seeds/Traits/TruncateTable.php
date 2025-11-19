@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Class TruncateTable.
@@ -14,15 +15,23 @@ trait TruncateTable
      */
     protected function truncate($table)
     {
+        // Check if table exists before truncating
+        if (!Schema::hasTable($table)) {
+            return true;
+        }
+
         switch (DB::getDriverName()) {
             case 'mysql':
-                return DB::table($table)->truncate();
+                DB::table($table)->truncate();
+                return true;
 
             case 'pgsql':
-                return  DB::statement('TRUNCATE TABLE '.$table.' RESTART IDENTITY CASCADE');
+                DB::statement('TRUNCATE TABLE '.$table.' RESTART IDENTITY CASCADE');
+                return true;
 
             case 'sqlite': case 'sqlsrv':
-            return DB::statement('DELETE FROM '.$table);
+                DB::statement('DELETE FROM '.$table);
+                return true;
         }
 
         return false;

@@ -22,17 +22,6 @@ class CreateClientTypesTable extends Migration
                 $table->softDeletes();
                 $table->timestamps();
             });
-
-            // Insert permissions into the permissions table
-            $permissions = [
-                ['name' => 'View ClientType', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Store ClientType', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Update ClientType', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Delete ClientType', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ];
-
-            // Use DB facade to insert permissions
-            DB::table('permissions')->insert($permissions);
         }
     }
 
@@ -43,6 +32,9 @@ class CreateClientTypesTable extends Migration
      */
     public function down()
     {
+        // Disable foreign key constraints temporarily
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('client_types');
 
         // Remove permissions
@@ -54,5 +46,8 @@ class CreateClientTypesTable extends Migration
                 'Delete ClientType'
             ])
             ->delete();
+        
+        // Re-enable foreign key constraints
+        Schema::enableForeignKeyConstraints();
     }
 }

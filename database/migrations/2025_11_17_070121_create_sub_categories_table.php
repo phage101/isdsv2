@@ -19,23 +19,12 @@ class CreateSubCategoriesTable extends Migration
                 $table->unsignedBigInteger('categories_id')->index();
                 $table->string('name', 191);
                 $table->text('description')->nullable();
-                $table->boolean('is_active')->default(true);
+                $table->boolean('active')->default(true);
                 $table->softDeletes();
                 $table->timestamps();
 
                 $table->foreign('categories_id')->references('id')->on('categories')->onDelete('cascade');
             });
-
-            // Insert permissions into the permissions table
-            $permissions = [
-                ['name' => 'View SubCategory', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Store SubCategory', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Update SubCategory', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Delete SubCategory', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ];
-
-            // Use DB facade to insert permissions
-            DB::table('permissions')->insert($permissions);
         }
     }
 
@@ -46,6 +35,9 @@ class CreateSubCategoriesTable extends Migration
      */
     public function down()
     {
+        // Disable foreign key constraints temporarily
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('sub_categories');
 
         // Remove permissions
@@ -57,5 +49,8 @@ class CreateSubCategoriesTable extends Migration
                 'Delete SubCategory'
             ])
             ->delete();
+        
+        // Re-enable foreign key constraints
+        Schema::enableForeignKeyConstraints();
     }
 }

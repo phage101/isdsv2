@@ -18,21 +18,10 @@ class CreateProvincesTable extends Migration
                 $table->bigIncrements('id');
                 $table->string('province_code');
                 $table->string('name');
-                $table->unsignedTinyInteger('active')->default(1);
+                $table->boolean('active')->default(true);
                 $table->softDeletes();
                 $table->timestamps();
             });
-
-            // Insert permissions into the permissions table
-            $permissions = [
-                ['name' => 'View Province', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Store Province', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Update Province', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Delete Province', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ];
-
-            // Use DB facade to insert permissions
-            DB::table('permissions')->insert($permissions);
         }
     }
 
@@ -43,6 +32,9 @@ class CreateProvincesTable extends Migration
      */
     public function down()
     {
+        // Disable foreign key constraints temporarily
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('provinces');
 
         // Remove permissions
@@ -54,5 +46,8 @@ class CreateProvincesTable extends Migration
                 'Delete Province'
             ])
             ->delete();
+        
+        // Re-enable foreign key constraints
+        Schema::enableForeignKeyConstraints();
     }
 }

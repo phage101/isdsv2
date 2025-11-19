@@ -21,6 +21,7 @@ class CreateOfficesTable extends Migration
                 // Core identifiers
                 $table->string('office_code', 50)->unique();
                 $table->string('name');
+                $table->boolean('active')->default(true);
 
                 // Foreign keys
                 $table->unsignedBigInteger('office_types_id');
@@ -46,16 +47,6 @@ class CreateOfficesTable extends Migration
                       ->onUpdate('cascade')
                       ->onDelete('restrict');
             });
-
-            // Insert permissions into the permissions table
-            $permissions = [
-                ['name' => 'View Office',   'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Store Office',  'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Update Office', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Delete Office', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ];
-
-            DB::table('permissions')->insert($permissions);
         }
     }
 
@@ -66,6 +57,9 @@ class CreateOfficesTable extends Migration
      */
     public function down()
     {
+        // Disable foreign key constraints temporarily
+        Schema::disableForeignKeyConstraints();
+        
         // Drop foreign keys first if table exists
         if (Schema::hasTable('offices')) {
             Schema::table('offices', function (Blueprint $table) {
@@ -90,5 +84,8 @@ class CreateOfficesTable extends Migration
                 'Delete Office'
             ])
             ->delete();
+        
+        // Re-enable foreign key constraints
+        Schema::enableForeignKeyConstraints();
     }
 }

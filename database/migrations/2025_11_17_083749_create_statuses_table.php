@@ -20,7 +20,7 @@ class CreateStatusesTable extends Migration
                 $table->enum('status_type', ['helpdesk','meeting'])->default('helpdesk');
                 $table->string('status_color')->nullable();
                 $table->string('status_hex')->nullable();
-                $table->boolean('is_active')->default(true);
+                $table->boolean('active')->default(true);
                 $table->softDeletes();
                 $table->timestamps();
             });
@@ -29,17 +29,6 @@ class CreateStatusesTable extends Migration
             Schema::table('statuses', function (Blueprint $table) {
                 $table->unique(['name', 'status_type']);
             });
-
-            // Insert permissions into the permissions table
-            $permissions = [
-                ['name' => 'View Status', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Store Status', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Update Status', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'Delete Status', 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ];
-
-            // Use DB facade to insert permissions
-            DB::table('permissions')->insert($permissions);
         }
     }
 
@@ -50,6 +39,9 @@ class CreateStatusesTable extends Migration
      */
     public function down()
     {
+        // Disable foreign key constraints temporarily
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('statuses');
 
         // Remove permissions
@@ -61,5 +53,8 @@ class CreateStatusesTable extends Migration
                 'Delete Status'
             ])
             ->delete();
+        
+        // Re-enable foreign key constraints
+        Schema::enableForeignKeyConstraints();
     }
 }
