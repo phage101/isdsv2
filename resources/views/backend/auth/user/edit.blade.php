@@ -105,7 +105,7 @@
                         {{ html()->label('Phone')->class('col-md-2 form-control-label')->for('phone') }}
 
                         <div class="col-md-10">
-                            {{ html()->tel('phone')
+                            {{ html()->text('phone')
                                 ->class('form-control')
                                 ->attribute('placeholder', 'Phone Number')
                                 ->attribute('maxlength', 191) }}

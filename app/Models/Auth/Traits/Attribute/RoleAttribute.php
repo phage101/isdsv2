@@ -29,7 +29,7 @@ trait RoleAttribute
                 data-trans-button-confirm="' . __('buttons.general.crud.delete') . '"
                 data-trans-title="' . __('strings.backend.general.are_you_sure') . '"
                 class="btn btn-danger">' .
-            '<form action="' . route('admin.auth.role.destroy', $this) . '" method="GET" name="delete_item" style="display:none">'
+            '<form action="' . route('admin.auth.role.destroy', $this) . '" method="POST" name="delete_item" style="display:none">'
             . '<input type="hidden" name="_method" value="delete" />'
             . '<input type="hidden" name="_token" value="' . csrf_token() . '" />'
             . '</form>' .
