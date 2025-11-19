@@ -24,7 +24,7 @@
                         <thead>
                         <tr>
                             <th>@lang('labels.backend.access.roles.table.role')</th>
-                            <th>@lang('labels.backend.access.roles.table.permissions')</th>
+                            <!-- <th>@lang('labels.backend.access.roles.table.permissions')</th> -->
                             <th style="width:25%; text-align: left;">@lang('labels.backend.access.roles.table.number_of_users')</th>
                             <th style="width:10%">@lang('labels.general.actions')</th>
                         </tr>
@@ -52,7 +52,7 @@
             ajax: "{{ route('admin.auth.role.index') }}",
             columns: [
                 { data: 'name', name: 'name', searchable: true },
-                { data: 'permissions', name: 'permissions', orderable: false, searchable: false },
+                //{ data: 'permissions', name: 'permissions', orderable: false, searchable: false },
                 { data: 'users_count', name: 'users_count', searchable: false },
                 { data: 'action', name: 'action', orderable: false, searchable: false }
             ]
