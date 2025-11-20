@@ -29,8 +29,8 @@
                             <tr>
                                 <th>@lang('backend_provinces.table.province_code')</th>
                                 <th>Name</th>
-                                <th>Active</th>
-                                <th style="width:0%">@lang('backend_provinces.table.actions')</th>
+                                <th style="width:0%;white-space:nowrap">Active</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_provinces.table.actions')</th>
                             </tr>
                         </thead>
                         <tbody>

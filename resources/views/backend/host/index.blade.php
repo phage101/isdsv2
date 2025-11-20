@@ -28,8 +28,8 @@
                         <thead>
                             <tr>
                                 <th>@lang('backend_hosts.table.name')</th>
-                                <th>@lang('backend_hosts.table.active')</th>
-                                <th style="width:0%">@lang('backend_hosts.table.actions')</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_hosts.table.active')</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_hosts.table.actions')</th>
                             </tr>
                         </thead>
                         <tbody>

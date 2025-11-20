@@ -29,8 +29,8 @@
                             <tr>
                                 <th>@lang('backend_priority_levels.table.name')</th>
                                 <th>@lang('backend_priority_levels.table.description')</th>
-                                <th>@lang('backend_priority_levels.table.active')</th>
-                                <th style="width:0%">@lang('backend_priority_levels.table.actions')</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_priority_levels.table.active')</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_priority_levels.table.actions')</th>
                             </tr>
                         </thead>
                         <tbody>

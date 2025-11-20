@@ -29,8 +29,8 @@
                             <tr>
                                 <th>@lang('backend_client_types.table.name')</th>
                                 <th>@lang('backend_client_types.table.description')</th>
-                                <th>@lang('backend_client_types.table.active')</th>
-                                <th style="width:0%">@lang('backend_client_types.table.actions')</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_client_types.table.active')</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_client_types.table.actions')</th>
                             </tr>
                         </thead>
                         <tbody>

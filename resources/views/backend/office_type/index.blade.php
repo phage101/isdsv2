@@ -28,8 +28,8 @@
                         <thead>
                             <tr>
                                 <th>@lang('backend_office_types.table.office_type')</th>
-                                <th>Active</th>
-                                <th style="width:0%">@lang('backend_office_types.table.actions')</th>
+                                <th style="width:0%;white-space:nowrap">Active</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_office_types.table.actions')</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -29,10 +29,10 @@
                             <tr>
                                 <th>@lang('backend_offices.table.title')</th>
                                 <th>Office Name</th>
-                                <th>Office Type</th>
-                                <th>Province</th>
-                                <th>Active</th>
-                                <th style="width:0%">@lang('backend_offices.table.actions')</th>
+                                <th style="width:0%;white-space:nowrap">Office Type</th>
+                                <th style="width:0%;white-space:nowrap">Province</th>
+                                <th style="width:0%;white-space:nowrap">Active</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_offices.table.actions')</th>
                             </tr>
                         </thead>
                         <tbody>

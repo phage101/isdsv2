@@ -31,8 +31,8 @@
                                 <th>@lang('backend_statuses.table.status_type')</th>
                                 <th>@lang('backend_statuses.table.status_color')</th>
                                 <th>@lang('backend_statuses.table.status_hex')</th>
-                                <th>@lang('backend_statuses.table.active')</th>
-                                <th style="width:0%">@lang('backend_statuses.table.actions')</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_statuses.table.active')</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_statuses.table.actions')</th>
                             </tr>
                         </thead>
                         <tbody>

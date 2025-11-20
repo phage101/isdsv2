@@ -28,8 +28,8 @@
                         <thead>
                             <tr>
                                 <th>{{ __('backend_sub_categories.table.sub_category') ?? 'Sub Category' }}</th>
-                                <th>{{ __('backend_sub_categories.table.active') ?? 'Active' }}</th>
-                                <th style="width:0%">@lang('backend_sub_categories.table.actions')</th>
+                                <th style="width:0%;white-space:nowrap">{{ __('backend_sub_categories.table.active') ?? 'Active' }}</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_sub_categories.table.actions')</th>
                             </tr>
                         </thead>
                         <tbody>

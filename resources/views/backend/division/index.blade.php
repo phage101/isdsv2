@@ -29,8 +29,8 @@
                             <tr>
                                 <th>@lang('backend_divisions.table.division_code')</th>
                                 <th>@lang('backend_divisions.table.name')</th>
-                                <th>Active</th>
-                                <th style="width:0%">@lang('backend_divisions.table.actions')</th>
+                                <th style="width:0%;white-space:nowrap">Active</th>
+                                <th style="width:0%;white-space:nowrap">@lang('backend_divisions.table.actions')</th>
                             </tr>
                         </thead>
                         <tbody>
