@@ -69,6 +69,11 @@
         "datatables.net-responsive-bs4": "^2.2.6",
         "jszip": "^3.5.0",
         "pdfmake": "^0.1.68",
-        "tempusdominus-bootstrap-4": "^5.1.2"
+        "tempusdominus-bootstrap-4": "^5.1.2",
+        "@fullcalendar/core": "^5.11.3",
+        "@fullcalendar/daygrid": "^5.11.3",
+        "@fullcalendar/timegrid": "^5.11.3",
+        "@fullcalendar/interaction": "^5.11.3",
+        "@fullcalendar/bootstrap": "^5.11.3"
     }
 }

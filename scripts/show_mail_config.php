@@ -1,0 +1,1 @@
+`request_number`, `requested_by`, `date_requested`, `request_types_id`, `categories_id`, `sub_categories_id`, `complaint`, `datetime_preferred`, `statuses_id`, `property_number`, `priority_levels_id`, `media_id`, `serviced_by`, `approved_by`, `datetime_start`, `datetime_end`, `is_pullout`, `is_turnover`, `diagnosis`, `action_taken`, `remarks`,`offices_id`

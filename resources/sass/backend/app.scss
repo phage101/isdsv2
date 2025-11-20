@@ -6,6 +6,8 @@
 // Import styles
 @import "~@coreui/coreui/scss/coreui";
 
+// FullCalendar styles are imported from JS entrypoint
+
 // Fix inaccessible dropdown in .table-responsive dropdown buttons
 .table-responsive {
     overflow-x: inherit;

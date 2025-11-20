@@ -98,6 +98,56 @@ class StatusesTableSeeder extends Seeder
             ],
         ];
 
-        DB::table('statuses')->insert($statuses);
+        // Meeting statuses
+        $meetingStatuses = [
+            [
+                'name' => 'Scheduled',
+                'status_type' => 'meeting',
+                'status_color' => 'info',
+                'status_hex' => '#17a2b8',
+                'active' => true,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'Confirmed',
+                'status_type' => 'meeting',
+                'status_color' => 'primary',
+                'status_hex' => '#007bff',
+                'active' => true,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'Completed',
+                'status_type' => 'meeting',
+                'status_color' => 'success',
+                'status_hex' => '#28a745',
+                'active' => true,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'Cancelled',
+                'status_type' => 'meeting',
+                'status_color' => 'danger',
+                'status_hex' => '#dc3545',
+                'active' => true,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'No Show',
+                'status_type' => 'meeting',
+                'status_color' => 'warning',
+                'status_hex' => '#ffc107',
+                'active' => true,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+        ];
+
+        // Merge and insert all statuses
+        DB::table('statuses')->insert(array_merge($statuses, $meetingStatuses));
     }
 }
